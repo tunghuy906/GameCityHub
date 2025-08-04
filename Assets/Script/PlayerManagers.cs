@@ -10,6 +10,7 @@ public class PlayerManagers : MonoBehaviour
 	private void Awake()
 	{
 		characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
+		Debug.Log("Loaded Character Index: " + characterIndex);
 		GameObject player = Instantiate(playerPrefabs[characterIndex]);
 		VCam.Follow = player.transform;
 	}
