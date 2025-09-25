@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,7 +95,238 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: FreeCats2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 125.33333
+        width: 64
+        height: 62.666668
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84a3ee5aa0e0c0a49bab3625b556e65f
+      internalID: 1690270332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeCats2_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 125.33333
+        width: 64
+        height: 62.666668
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c576b67590e85654bbf54c6211b5d5bb
+      internalID: -583772285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeCats2_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 125.33333
+        width: 64
+        height: 62.666668
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 394808b2b540303498bf6c04ea02faa0
+      internalID: 449979551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeCats2_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 125.33333
+        width: 64
+        height: 62.666668
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e132cdf63364d6c4b8938e7320d1682c
+      internalID: 409430768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeCats2_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 63.333332
+        width: 64
+        height: 62.666668
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61ec371855ebfc74b93d64053636ed37
+      internalID: -926964057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeCats2_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 63.333332
+        width: 64
+        height: 62.666668
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b00b4078ac4e4314092b5b33d78f734c
+      internalID: -798457312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeCats2_6
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 68
+        width: 60
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1697be113018bcf4f8c05ee3e82d04b4
+      internalID: 694953035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeCats2_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.3333321
+        width: 64
+        height: 62.666668
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbcf05c6876495343be7561128e76c87
+      internalID: 1097005134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeCats2_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1.3333321
+        width: 64
+        height: 62.666668
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48dfa154c525a1742b1685fefdfd1e2d
+      internalID: 1984654317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeCats2_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20d544fb2b349c941a78aae7786b210b
+      internalID: -487368430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeCats2_10
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1.3333321
+        width: 64
+        height: 62.666668
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59a76c4c43288164c93fe7ab923bf467
+      internalID: -1549351824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +337,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FreeCats2_0: 1690270332
+      FreeCats2_1: -583772285
+      FreeCats2_10: -1549351824
+      FreeCats2_2: 449979551
+      FreeCats2_3: 409430768
+      FreeCats2_4: -926964057
+      FreeCats2_5: -798457312
+      FreeCats2_6: 694953035
+      FreeCats2_7: 1097005134
+      FreeCats2_8: 1984654317
+      FreeCats2_9: -487368430
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

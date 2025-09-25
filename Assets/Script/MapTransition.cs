@@ -1,15 +1,22 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MapTransition : MonoBehaviour
 {
 	[SerializeField] private int sceneIndexToLoad; // index của scene
+	[SerializeField] private float delay = 1f;
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.CompareTag("Player")) // kiểm tra va chạm với Player
+		if (other.CompareTag("Player"))
 		{
-			SceneManager.LoadScene(sceneIndexToLoad);
+			StartCoroutine(LoadSceneAfterDelay());
 		}
+	}
+	private IEnumerator LoadSceneAfterDelay()
+	{
+		yield return new WaitForSeconds(delay);
+		SceneManager.LoadScene(sceneIndexToLoad);
 	}
 }
