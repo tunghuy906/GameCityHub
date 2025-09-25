@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TopDownMap.unity
     guid: 4644d0bfab0b569419aab3db0a11caf4
+  - enabled: 1
+    path: Assets/Scenes/CatRoom.unity
+    guid: d74ab35b3814e8347a482d23149e89b6
   m_configObjects: {}
