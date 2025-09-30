@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Scenes/Main/Menu.unity
     guid: 04402a2213c26354197a1776086bda5f
   - enabled: 1
-    path: Assets/Scenes/PlatFormGame.unity
+    path: Assets/Scenes/Main/PlatFormGame.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/TopDownMap.unity
+    path: Assets/Scenes/TopDown/TopDownMap.unity
     guid: 4644d0bfab0b569419aab3db0a11caf4
   - enabled: 1
-    path: Assets/Scenes/CatRoom.unity
+    path: Assets/Scenes/TopDown/CatRoom.unity
     guid: d74ab35b3814e8347a482d23149e89b6
   m_configObjects: {}
