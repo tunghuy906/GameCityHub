@@ -15,5 +15,10 @@ internal class AnimationStrings
 	internal static string attack = "attack";
 	internal static string isAlive = "isAlive";
 	internal static string hasTarget = "hasTarget";
-	internal static string IsHit = "IsHit";
+	internal static string isHit = "isHit";
+	internal static string lockVelocity = "lockVelocity";
+	internal static string hitTrigger = "hit";
+	internal static string attackStep = "attackStep";
+	internal static string blockHit = "blockHit";
+	internal static string isBlocking = "isBlocking";
 }

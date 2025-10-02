@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +8,8 @@ public class Damageable : MonoBehaviour
 	public UnityEvent<int, Vector2> damagableHit;
  
 	Animator animator;
+	private PlayerControllerFT playerController;
+	private AIControllerFT aiController;
 
 	[SerializeField]
 	private int _maxHealth = 100;
@@ -34,23 +36,25 @@ public class Damageable : MonoBehaviour
 			}
 		}
 	}
+
+	public bool LockVelocity
+	{
+		get
+		{
+			return animator.GetBool(AnimationStrings.lockVelocity);
+		}
+		set
+		{
+			animator.SetBool(AnimationStrings.lockVelocity, value);
+		}
+	}
+	[SerializeField]
 	private bool _isAlive = false;
 
 	[SerializeField]
 	private bool isInvincible = false;
 
-	public bool IsHit
-	{
-		get
-		{
-			return animator.GetBool(AnimationStrings.IsHit);
-		}
-		private set
-		{
-			animator.SetBool(AnimationStrings.IsHit, value);
-		}
-	}
-
+	
 	private float timeSinceHit = 0;
 	public float invincibilityTime = 0.25f;
 
@@ -63,7 +67,7 @@ public class Damageable : MonoBehaviour
 			animator.SetBool(AnimationStrings.isAlive, value);
 		}
 	}
-
+	
 	private void Update()
 	{
 		if (isInvincible)
@@ -81,17 +85,56 @@ public class Damageable : MonoBehaviour
 	private void Awake()
 	{
 		animator = GetComponent<Animator>();
+		playerController = GetComponent<PlayerControllerFT>();
+		aiController = GetComponent<AIControllerFT>();
 	}
-	
+
 	public bool Hit(int damage, Vector2 knockback)
 	{
-		if(IsAlive && !isInvincible)
+		if (IsAlive && !isInvincible)
 		{
-			Health -= damage;
-			isInvincible = true;
+			int finalDamage = damage;
+			bool isBlocking = false;
 
-			IsHit = true;
-			damagableHit?.Invoke(damage, knockback);
+			// --- Kiểm tra Player block ---
+			if (playerController != null && playerController.IsBlocking)
+			{
+				isBlocking = true;
+				finalDamage = Mathf.RoundToInt(damage * playerController.blockDamageReduction);
+			}
+
+			// --- Kiểm tra AI block ---
+			if (aiController != null && aiController.IsBlocking)
+			{
+				isBlocking = true;
+				finalDamage = Mathf.RoundToInt(damage * 0.3f); // AI block giảm còn 20% damage
+			}
+			else if (aiController != null)
+			{
+				// Nếu chưa block thì thử block cho các đòn tiếp theo
+				aiController.TryBlock();
+			}
+
+			if (isBlocking)
+			{
+				Debug.Log($"[BLOCK] Damage reduced from {damage} → {finalDamage}");
+				Health -= finalDamage;
+				isInvincible = true;
+
+				LockVelocity = true;
+				animator.SetTrigger(AnimationStrings.blockHit);
+			}
+			else
+			{
+				// Không block
+				Health -= finalDamage;
+				isInvincible = true;
+
+				LockVelocity = true;
+				animator.SetTrigger(AnimationStrings.hitTrigger);
+			}
+
+			damagableHit?.Invoke(finalDamage, knockback);
 
 			return true;
 		}

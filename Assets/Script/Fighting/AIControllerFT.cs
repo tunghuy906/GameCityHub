@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 public class AIControllerFT : MonoBehaviour
 {
 	[Header("Move Settings")]
@@ -16,13 +16,14 @@ public class AIControllerFT : MonoBehaviour
 	public Transform target;              // Player
 	public float attackRange = 1.5f;
 	public float detectionRange = 10f;
-	public float jumpChance = 0.1f;       // Xác suất nhảy
-	public float dashDistance = 5f;       // Nếu xa hơn giá trị này thì dash
+	public float dashDistance = 5f;
+	[SerializeField] private float blockChance = 0.3f;
 
 	private Vector2 moveInput;
 	private TouchingDirections touchingDirections;
 	private Rigidbody2D rb;
 	private Animator animator;
+	private Damageable damageable;
 
 	private bool _isMoving = false;
 	private bool isDashing = false;
@@ -30,9 +31,11 @@ public class AIControllerFT : MonoBehaviour
 	private bool _isFacingRight = true;
 
 	private float lastAttackTime;
-	public float attackCooldown = 1f;
+	private int attackStep = 0;
+	float comboResetTime = 0.8f; 
+								 
 
-	// --- Properties giữ nguyên từ PlayerControllerFT ---
+	// --- Properties giống Player ---
 	public float CurrentMoveSpeed
 	{
 		get
@@ -46,10 +49,7 @@ public class AIControllerFT : MonoBehaviour
 						if (isDashing) return dashSpeed;
 						else return MoveSpeed;
 					}
-					else
-					{
-						return airWalkSpeed;
-					}
+					else return airWalkSpeed;
 				}
 				else return 0;
 			}
@@ -57,6 +57,19 @@ public class AIControllerFT : MonoBehaviour
 		}
 	}
 
+	private bool _isBlocking = false;
+	public bool IsBlocking
+	{
+		get
+		{
+			return _isBlocking;
+		}
+		private set
+		{
+			_isBlocking = value;
+			animator.SetBool(AnimationStrings.isBlocking, value);
+		}
+	}
 	public bool IsMoving
 	{
 		get { return _isMoving; }
@@ -79,11 +92,9 @@ public class AIControllerFT : MonoBehaviour
 			_isFacingRight = value;
 		}
 	}
+	public bool CanMove => animator.GetBool(AnimationStrings.canMove);
 
-	public bool CanMove
-	{
-		get { return animator.GetBool(AnimationStrings.canMove); }
-	}
+	public bool IsAlive => animator.GetBool(AnimationStrings.isAlive);
 
 	// --- Unity Methods ---
 	private void Awake()
@@ -91,11 +102,12 @@ public class AIControllerFT : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 		touchingDirections = GetComponent<TouchingDirections>();
+		damageable = GetComponent<Damageable>();
 	}
 
 	private void FixedUpdate()
 	{
-		if (!isDashing)
+		if (!isDashing && !damageable.LockVelocity)
 		{
 			rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
 		}
@@ -104,7 +116,7 @@ public class AIControllerFT : MonoBehaviour
 
 	private void Update()
 	{
-		if (target == null) return;
+		if (!IsAlive || target == null) return;
 
 		float distance = Vector2.Distance(transform.position, target.position);
 
@@ -115,7 +127,6 @@ public class AIControllerFT : MonoBehaviour
 			IsMoving = false;
 			return;
 		}
-
 		// --- Di chuyển về phía player ---
 		if (Mathf.Abs(target.position.x - transform.position.x) > attackRange)
 		{
@@ -124,13 +135,9 @@ public class AIControllerFT : MonoBehaviour
 			IsMoving = true;
 			SetFacingDirection(moveInput);
 
-			// Cơ hội dash khi đủ xa
+			// Dash nếu đủ xa
 			if (distance > dashDistance && canDash)
 				StartCoroutine(Dash());
-
-			// Cơ hội nhảy random
-			if (touchingDirections.IsGrounded && Random.value < jumpChance * Time.deltaTime)
-				Jump();
 		}
 		else
 		{
@@ -170,13 +177,19 @@ public class AIControllerFT : MonoBehaviour
 		canDash = true;
 	}
 
+	
 	private void TryAttack()
 	{
-		if (Time.time > lastAttackTime + attackCooldown)
-		{
-			animator.SetTrigger(AnimationStrings.attack);
-			lastAttackTime = Time.time;
-		}
+		if (Time.time > lastAttackTime + comboResetTime)
+			attackStep = 0; // reset combo nếu quá lâu không đánh
+
+		attackStep++;
+		if (attackStep > 3) attackStep = 1; // loop lại 1 → 3
+
+		animator.SetInteger("attackStep", attackStep);
+		animator.SetTrigger("attack");
+
+		lastAttackTime = Time.time;
 	}
 
 	private void SetFacingDirection(Vector2 moveInput)
@@ -190,6 +203,32 @@ public class AIControllerFT : MonoBehaviour
 			IsFacingRight = false;
 		}
 	}
+	public void TryBlock()
+	{
+		if (Random.value < blockChance && !IsBlocking) // không đang block thì mới block
+		{
+			StartCoroutine(BlockRoutine());
+		}
+	}
+
+	private IEnumerator BlockRoutine()
+	{
+		IsBlocking = true;   // bật block
+		Debug.Log("AI START BLOCK");
+
+		// Giữ block trong 0.5 - 1 giây
+		yield return new WaitForSeconds(Random.Range(0.5f, 1f));
+
+		IsBlocking = false;  // tắt block
+		Debug.Log("AI END BLOCK");
+	}
+	// --- Nhận damage giống Player ---
+	public void OnHit(int damage, Vector2 knockback)
+	{
+		rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+	}
+
+	// --- Lắng nghe Player Jump để nhảy theo ---
 	private void OnEnable()
 	{
 		PlayerControllerFT.OnPlayerJump += HandlePlayerJump;
@@ -202,7 +241,6 @@ public class AIControllerFT : MonoBehaviour
 
 	private void HandlePlayerJump()
 	{
-		// Enemy chỉ nhảy khi đang đứng đất & trong phạm vi detection
 		if (touchingDirections.IsGrounded && target != null)
 		{
 			float distance = Vector2.Distance(transform.position, target.position);
