@@ -88,7 +88,11 @@ public class Damageable : MonoBehaviour
 		playerController = GetComponent<PlayerControllerFT>();
 		aiController = GetComponent<AIControllerFT>();
 	}
-
+	private IEnumerator UnlockVelocityAfterAnim(float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		LockVelocity = false;
+	}
 	public bool Hit(int damage, Vector2 knockback)
 	{
 		if (IsAlive && !isInvincible)
@@ -123,6 +127,8 @@ public class Damageable : MonoBehaviour
 
 				LockVelocity = true;
 				animator.SetTrigger(AnimationStrings.blockHit);
+
+				StartCoroutine(UnlockVelocityAfterAnim(0.2f));
 			}
 			else
 			{

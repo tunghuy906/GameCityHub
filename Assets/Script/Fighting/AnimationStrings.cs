@@ -21,4 +21,7 @@ internal class AnimationStrings
 	internal static string attackStep = "attackStep";
 	internal static string blockHit = "blockHit";
 	internal static string isBlocking = "isBlocking";
+	internal static string Skill1 = "Skill1";
+	internal static string Skill2 = "Skill2";
+	internal static string Skill3 = "Skill3";
 }

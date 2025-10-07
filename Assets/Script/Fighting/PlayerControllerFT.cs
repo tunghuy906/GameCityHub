@@ -21,7 +21,15 @@ public class PlayerControllerFT : MonoBehaviour
 	TouchingDirections touchingDirections;
 	Damageable damageable;
 
-    private bool _isMoving = false;
+	// --- Skill Cooldowns ---
+	[SerializeField] private float skill1Cooldown = 1f; // 3s hồi chiêu
+	[SerializeField] private float skill2Cooldown = 3f; // 3s hồi chiêu
+	[SerializeField] private float skill3Cooldown = 5f; // 3s hồi chiêu
+	private bool skill1OnCooldown = false;
+	private bool skill2OnCooldown = false;
+	private bool skill3OnCooldown = false;
+
+	private bool _isMoving = false;
 	private bool isDashing = false;
 	private bool canDash = true;
 	private int attackStep = 0;
@@ -133,7 +141,15 @@ public class PlayerControllerFT : MonoBehaviour
 	{
 		if (IsAlive && !isDashing && !damageable.LockVelocity)
 		{
-			rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+			if (IsBlocking)
+			{
+				// khi block thì đứng yên (khóa trơn trượt)
+				rb.velocity = new Vector2(0, rb.velocity.y);
+			}
+			else
+			{
+				rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+			}
 		}
 		else if (!IsAlive)
 		{
@@ -143,22 +159,28 @@ public class PlayerControllerFT : MonoBehaviour
 		animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
 	}
 
+
 	public void OnMove(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<Vector2>();
-
-		if(IsAlive)
+	{
+		if (IsBlocking) // khi block thì không đọc input
 		{
-        IsMoving = moveInput != Vector2.zero;
+			moveInput = Vector2.zero;
+			IsMoving = false;
+			return;
+		}
 
-		SetFacingDirection(moveInput);
+		moveInput = context.ReadValue<Vector2>();
+
+		if (IsAlive)
+		{
+			IsMoving = moveInput != Vector2.zero;
+			SetFacingDirection(moveInput);
 		}
 		else
 		{
 			IsMoving = false;
 		}
-
-    }
+	}
 
 	public void OnJump(InputAction.CallbackContext context)
 	{
@@ -172,6 +194,7 @@ public class PlayerControllerFT : MonoBehaviour
 	}
 	public void OnDash(InputAction.CallbackContext context)
 	{
+		if (IsBlocking) return; // không dash khi block
 		if (context.performed && canDash)
 		{
 			StartCoroutine(Dash());
@@ -180,10 +203,74 @@ public class PlayerControllerFT : MonoBehaviour
 
 	public void OnAttack(InputAction.CallbackContext context)
 	{
-		if(context.started)
+		if (IsBlocking) return; // không tấn công khi block
+		if (context.started)
 		{
 			TryAttack();
 		}
+	}
+
+	public void OnSkill1(InputAction.CallbackContext context)
+	{
+		if (context.started && !skill1OnCooldown)
+		{
+			animator.SetTrigger(AnimationStrings.Skill1);
+
+			// bắt đầu hồi chiêu
+			StartCoroutine(Skill1CooldownRoutine());
+		}
+		else if (context.started && skill1OnCooldown)
+		{
+			Debug.Log("Skill1 đang hồi chiêu...");
+		}
+	}
+	public void OnSkill2(InputAction.CallbackContext context)
+	{
+		if (context.started && !skill2OnCooldown)
+		{
+			animator.SetTrigger(AnimationStrings.Skill2);
+
+			// bắt đầu hồi chiêu
+			StartCoroutine(Skill2CooldownRoutine());
+		}
+		else if (context.started && skill2OnCooldown)
+		{
+			Debug.Log("Skill1 đang hồi chiêu...");
+		}
+	}
+	public void OnSkill3(InputAction.CallbackContext context)
+	{
+		if (context.started && !skill3OnCooldown)
+		{
+			animator.SetTrigger(AnimationStrings.Skill3);
+
+			// bắt đầu hồi chiêu
+			StartCoroutine(Skill3CooldownRoutine());
+		}
+		else if (context.started && skill3OnCooldown)
+		{
+			Debug.Log("Skill1 đang hồi chiêu...");
+		}
+	}
+	private IEnumerator Skill1CooldownRoutine()
+	{
+		skill1OnCooldown = true;
+		yield return new WaitForSeconds(skill1Cooldown);
+		skill1OnCooldown = false;
+	}
+
+	private IEnumerator Skill2CooldownRoutine()
+	{
+		skill2OnCooldown = true;
+		yield return new WaitForSeconds(skill2Cooldown);
+		skill2OnCooldown = false;
+	}
+
+	private IEnumerator Skill3CooldownRoutine()
+	{
+		skill3OnCooldown = true;
+		yield return new WaitForSeconds(skill3Cooldown);
+		skill3OnCooldown = false;
 	}
 	private void TryAttack()
 	{
