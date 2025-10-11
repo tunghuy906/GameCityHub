@@ -29,6 +29,8 @@ public class PlayerControllerFT : MonoBehaviour
 	private bool skill2OnCooldown = false;
 	private bool skill3OnCooldown = false;
 
+	private ManaSystem manaSystem;
+
 	private bool _isMoving = false;
 	private bool isDashing = false;
 	private bool canDash = true;
@@ -135,6 +137,7 @@ public class PlayerControllerFT : MonoBehaviour
 		animator = GetComponent<Animator>();
 		touchingDirections = GetComponent<TouchingDirections>();
 		damageable = GetComponent<Damageable>();
+		manaSystem = GetComponent<ManaSystem>();
 	}
 
 	private void FixedUpdate()
@@ -214,10 +217,15 @@ public class PlayerControllerFT : MonoBehaviour
 	{
 		if (context.started && !skill1OnCooldown)
 		{
+			if (manaSystem.UseMana(15))
+			{
 			animator.SetTrigger(AnimationStrings.Skill1);
-
-			// bắt đầu hồi chiêu
 			StartCoroutine(Skill1CooldownRoutine());
+			}
+			else
+			{
+				Debug.Log("Không đủ mana để dùng Skill1!");
+			}
 		}
 		else if (context.started && skill1OnCooldown)
 		{
@@ -228,10 +236,15 @@ public class PlayerControllerFT : MonoBehaviour
 	{
 		if (context.started && !skill2OnCooldown)
 		{
+			if (manaSystem.UseMana(25))
+			{
 			animator.SetTrigger(AnimationStrings.Skill2);
-
-			// bắt đầu hồi chiêu
 			StartCoroutine(Skill2CooldownRoutine());
+			}
+			else
+			{
+				Debug.Log("Không đủ mana để dùng Skill2!");
+			}
 		}
 		else if (context.started && skill2OnCooldown)
 		{
@@ -242,10 +255,15 @@ public class PlayerControllerFT : MonoBehaviour
 	{
 		if (context.started && !skill3OnCooldown)
 		{
-			animator.SetTrigger(AnimationStrings.Skill3);
-
-			// bắt đầu hồi chiêu
-			StartCoroutine(Skill3CooldownRoutine());
+			if (manaSystem.UseMana(50))
+			{
+				animator.SetTrigger(AnimationStrings.Skill3);
+				StartCoroutine(Skill3CooldownRoutine());
+			}
+			else
+			{
+				Debug.Log("Không đủ mana để dùng Skill2!");
+			}
 		}
 		else if (context.started && skill3OnCooldown)
 		{
@@ -289,6 +307,10 @@ public class PlayerControllerFT : MonoBehaviour
 	public void OnHit(int damage, Vector2 knockback)
 	{
 		rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+		if (manaSystem != null)
+		{
+			manaSystem.GainManaFromDamage(damage);
+		}
 	}
 
 	public void OnBlock(InputAction.CallbackContext context)

@@ -13,7 +13,7 @@ public class AIControllerFT : MonoBehaviour
 	public float dashCooldown = 1f;
 
 	[Header("AI Settings")]
-	public Transform target;              // Player
+	public Transform target;
 	public float attackRange = 1.5f;
 	public float detectionRange = 10f;
 	public float dashDistance = 5f;
@@ -24,16 +24,20 @@ public class AIControllerFT : MonoBehaviour
 	[SerializeField] private float skill2Cooldown = 4f;
 	[SerializeField] private float skill3Cooldown = 6f;
 
+	[SerializeField] private int skill1ManaCost = 15;
+	[SerializeField] private int skill2ManaCost = 25;
+	[SerializeField] private int skill3ManaCost = 50;
+
 	private bool skill1OnCooldown = false;
 	private bool skill2OnCooldown = false;
 	private bool skill3OnCooldown = false;
-
 
 	private Vector2 moveInput;
 	private TouchingDirections touchingDirections;
 	private Rigidbody2D rb;
 	private Animator animator;
 	private Damageable damageable;
+	private ManaSystem manaSystem;
 
 	private bool _isMoving = false;
 	private bool isDashing = false;
@@ -50,7 +54,7 @@ public class AIControllerFT : MonoBehaviour
 	{
 		get
 		{
-			if (CanMove && !IsBlocking)   // <<<<<< chặn move khi block
+			if (CanMove && !IsBlocking)
 			{
 				if (IsMoving && !touchingDirections.IsOnWall)
 				{
@@ -101,7 +105,6 @@ public class AIControllerFT : MonoBehaviour
 		}
 	}
 	public bool CanMove => animator.GetBool(AnimationStrings.canMove);
-
 	public bool IsAlive => animator.GetBool(AnimationStrings.isAlive);
 
 	// --- Unity Methods ---
@@ -111,6 +114,7 @@ public class AIControllerFT : MonoBehaviour
 		animator = GetComponent<Animator>();
 		touchingDirections = GetComponent<TouchingDirections>();
 		damageable = GetComponent<Damageable>();
+		manaSystem = GetComponent<ManaSystem>(); // thêm phần mana
 	}
 
 	private void FixedUpdate()
@@ -119,7 +123,6 @@ public class AIControllerFT : MonoBehaviour
 		{
 			if (IsBlocking)
 			{
-				// khi block thì đứng yên, không di chuyển
 				rb.velocity = new Vector2(0, rb.velocity.y);
 			}
 			else
@@ -136,7 +139,6 @@ public class AIControllerFT : MonoBehaviour
 
 		if (IsBlocking)
 		{
-			// khi đang block thì không di chuyển/attack/dash
 			moveInput = Vector2.zero;
 			IsMoving = false;
 			return;
@@ -144,7 +146,6 @@ public class AIControllerFT : MonoBehaviour
 
 		float distance = Vector2.Distance(transform.position, target.position);
 
-		// Nếu ngoài detection range thì đứng yên
 		if (distance > detectionRange)
 		{
 			moveInput = Vector2.zero;
@@ -159,8 +160,7 @@ public class AIControllerFT : MonoBehaviour
 			IsMoving = true;
 			SetFacingDirection(moveInput);
 
-			// Dash random, không bám player nữa
-			if (canDash && Random.value < 0.01f) // 1% cơ hội mỗi frame (tầm 1 lần vài giây)
+			if (canDash && Random.value < 0.01f)
 				StartCoroutine(DashRandom());
 		}
 		else
@@ -168,61 +168,90 @@ public class AIControllerFT : MonoBehaviour
 			moveInput = Vector2.zero;
 			IsMoving = false;
 
-			// Quyết định đánh thường hay skill
 			if (Random.value < 0.7f)
-				TryAttack();  // 70% đánh thường
+				TryAttack();
 			else
-				TryUseSkill(); // 30% dùng skill
+				TryUseSkill();
 		}
 	}
 
-	// --- AI Actions ---
-	private void Jump()
+	// --- Combat Actions ---
+	private void TryUseSkill()
 	{
-		if (touchingDirections.IsGrounded && CanMove && !IsBlocking) // <<<< chặn khi block
+		if (IsBlocking || !IsAlive) return;
+
+		float roll = Random.value;
+
+		if (roll < 0.4f)
 		{
-			animator.SetTrigger(AnimationStrings.jump);
-			rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+			int skillIndex = Random.Range(1, 4);
+			switch (skillIndex)
+			{
+				case 1:
+					if (!skill1OnCooldown && manaSystem.UseMana(skill1ManaCost))
+					{
+						Debug.Log("AI dùng Skill 1 (tầm xa)");
+						animator.SetTrigger(AnimationStrings.Skill1);
+						StartCoroutine(Skill1CooldownRoutine());
+					}
+					break;
+
+				case 2:
+					if (!skill2OnCooldown && manaSystem.UseMana(skill2ManaCost))
+					{
+						Debug.Log("AI dùng Skill 2 (tầm gần)");
+						animator.SetTrigger(AnimationStrings.Skill2);
+						StartCoroutine(Skill2CooldownRoutine());
+					}
+					break;
+
+				case 3:
+					if (!skill3OnCooldown && manaSystem.UseMana(skill3ManaCost))
+					{
+						Debug.Log("AI dùng Skill 3 (tất sát)");
+						animator.SetTrigger(AnimationStrings.Skill3);
+						StartCoroutine(Skill3CooldownRoutine());
+					}
+					break;
+			}
+		}
+		else
+		{
+			TryAttack();
 		}
 	}
 
-	private IEnumerator DashRandom()
+	private IEnumerator Skill1CooldownRoutine()
 	{
-		if (IsBlocking) yield break;
-
-		canDash = false;
-		isDashing = true;
-		animator.SetBool(AnimationStrings.isDashing, true);
-
-		float originalGravity = rb.gravityScale;
-		rb.gravityScale = 0;
-
-		// random hướng dash (trái hoặc phải)
-		int dir = Random.value < 0.5f ? -1 : 1;
-		rb.velocity = new Vector2(dir * dashSpeed, 0);
-		IsFacingRight = dir > 0;
-
-		yield return new WaitForSeconds(dashTime);
-
-		rb.gravityScale = originalGravity;
-		isDashing = false;
-		animator.SetBool(AnimationStrings.isDashing, false);
-
-		yield return new WaitForSeconds(dashCooldown);
-		canDash = true;
+		skill1OnCooldown = true;
+		yield return new WaitForSeconds(skill1Cooldown);
+		skill1OnCooldown = false;
+	}
+	private IEnumerator Skill2CooldownRoutine()
+	{
+		skill2OnCooldown = true;
+		yield return new WaitForSeconds(skill2Cooldown);
+		skill2OnCooldown = false;
+	}
+	private IEnumerator Skill3CooldownRoutine()
+	{
+		skill3OnCooldown = true;
+		yield return new WaitForSeconds(skill3Cooldown);
+		skill3OnCooldown = false;
 	}
 
+	// --- Movement & Combat Logic ---
 	private void TryAttack()
 	{
-		if (IsBlocking) return; // <<<< chặn attack khi block
+		if (IsBlocking) return;
 		if (Time.time < lastAttackTime + attackCooldown)
 			return;
 
 		if (Time.time > lastAttackTime + comboResetTime)
-			attackStep = 0; // reset combo nếu quá lâu không đánh
+			attackStep = 0;
 
 		attackStep++;
-		if (attackStep > 3) attackStep = 1; // loop lại 1 → 3
+		if (attackStep > 3) attackStep = 1;
 
 		animator.SetInteger("attackStep", attackStep);
 		animator.SetTrigger("attack");
@@ -242,6 +271,31 @@ public class AIControllerFT : MonoBehaviour
 		}
 	}
 
+	private IEnumerator DashRandom()
+	{
+		if (IsBlocking) yield break;
+
+		canDash = false;
+		isDashing = true;
+		animator.SetBool(AnimationStrings.isDashing, true);
+
+		float originalGravity = rb.gravityScale;
+		rb.gravityScale = 0;
+
+		int dir = Random.value < 0.5f ? -1 : 1;
+		rb.velocity = new Vector2(dir * dashSpeed, 0);
+		IsFacingRight = dir > 0;
+
+		yield return new WaitForSeconds(dashTime);
+
+		rb.gravityScale = originalGravity;
+		isDashing = false;
+		animator.SetBool(AnimationStrings.isDashing, false);
+
+		yield return new WaitForSeconds(dashCooldown);
+		canDash = true;
+	}
+
 	public void TryBlock()
 	{
 		if (!IsBlocking && Random.value < blockChance)
@@ -255,20 +309,22 @@ public class AIControllerFT : MonoBehaviour
 		IsBlocking = true;
 		Debug.Log("AI START BLOCK");
 
-		// Giữ block trong 0.5 - 1 giây
 		yield return new WaitForSeconds(Random.Range(0.5f, 1f));
 
 		IsBlocking = false;
 		Debug.Log("AI END BLOCK");
 	}
 
-	// --- Nhận damage giống Player ---
+	// --- Hit Reaction ---
 	public void OnHit(int damage, Vector2 knockback)
 	{
 		rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+
+		// hồi mana khi bị đánh
+		manaSystem.GainManaFromDamage(damage);
 	}
 
-	// --- Lắng nghe Player Jump để nhảy theo ---
+	// --- Player Jump Response ---
 	private void OnEnable()
 	{
 		PlayerControllerFT.OnPlayerJump += HandlePlayerJump;
@@ -290,69 +346,13 @@ public class AIControllerFT : MonoBehaviour
 			}
 		}
 	}
-	private IEnumerator Skill1CooldownRoutine()
-	{
-		skill1OnCooldown = true;
-		yield return new WaitForSeconds(skill1Cooldown);
-		skill1OnCooldown = false;
-	}
-	private IEnumerator Skill2CooldownRoutine()
-	{
-		skill2OnCooldown = true;
-		yield return new WaitForSeconds(skill2Cooldown);
-		skill2OnCooldown = false;
-	}
-	private IEnumerator Skill3CooldownRoutine()
-	{
-		skill3OnCooldown = true;
-		yield return new WaitForSeconds(skill3Cooldown);
-		skill3OnCooldown = false;
-	}
-	private void TryUseSkill()
-	{
-		if (IsBlocking || !IsAlive) return;
 
-		// Random xác suất kích hoạt skill tổng thể
-		float roll = Random.value;
-
-		// 40% cơ hội dùng skill (chia đều 3 skill)
-		if (roll < 0.4f)
+	private void Jump()
+	{
+		if (touchingDirections.IsGrounded && CanMove && !IsBlocking)
 		{
-			int skillIndex = Random.Range(1, 4); // 1 → 3
-			switch (skillIndex)
-			{
-				case 1:
-					if (!skill1OnCooldown)
-					{
-						Debug.Log("AI dùng Skill 1 (tầm xa)");
-						animator.SetTrigger(AnimationStrings.Skill1);
-						StartCoroutine(Skill1CooldownRoutine());
-					}
-					break;
-
-				case 2:
-					if (!skill2OnCooldown)
-					{
-						Debug.Log("AI dùng Skill 2 (tầm gần)");
-						animator.SetTrigger(AnimationStrings.Skill2);
-						StartCoroutine(Skill2CooldownRoutine());
-					}
-					break;
-
-				case 3:
-					if (!skill3OnCooldown)
-					{
-						Debug.Log("AI dùng Skill 3 (tất sát)");
-						animator.SetTrigger(AnimationStrings.Skill3);
-						StartCoroutine(Skill3CooldownRoutine());
-					}
-					break;
-			}
-		}
-		else
-		{
-			// 60% còn lại thì đánh thường
-			TryAttack();
+			animator.SetTrigger(AnimationStrings.jump);
+			rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
 		}
 	}
 }

@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 9103199833612133924}
   - component: {fileID: 4077556306398010830}
   - component: {fileID: 1659015085268451195}
+  - component: {fileID: 3219164771509375617}
   m_Layer: 0
   m_Name: Samurai 1_AI
   m_TagString: Untagged
@@ -518,8 +519,11 @@ MonoBehaviour:
   damagableHit:
     m_PersistentCalls:
       m_Calls: []
-  _maxHealth: 100
-  _health: 100
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  _maxHealth: 300
+  _health: 300
   _isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.25
@@ -575,6 +579,24 @@ MonoBehaviour:
     spawnPoint: {fileID: 1765063716563925512}
     cooldown: 5
     isOnCooldown: 0
+--- !u!114 &3219164771509375617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585105403012078920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2948bde8c8ed1a1458b09e56d0d8588a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxMana: 200
+  _currentMana: 200
+  manaRegenRate: 5
+  manaChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6116176426600114283
 GameObject:
   m_ObjectHideFlags: 0

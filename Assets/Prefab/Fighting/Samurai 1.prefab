@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8561041890486503122}
   - component: {fileID: 1431381111230521961}
   - component: {fileID: 7705941925238090427}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SwordAttack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5641057944434032048}
   - component: {fileID: 2841992866149041093}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Skill 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 624061653472095769}
   - component: {fileID: 3576030310663113827}
   - component: {fileID: 885268067707624929}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SwordAttack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2426380991587846001}
   - component: {fileID: 4303360331784572190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Skill 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,9 +381,10 @@ GameObject:
   - component: {fileID: 4323571652174476355}
   - component: {fileID: 497850379561777682}
   - component: {fileID: 6153619378394657640}
-  m_Layer: 0
+  - component: {fileID: 4639733414376496824}
+  m_Layer: 8
   m_Name: Samurai 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -780,8 +781,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _maxHealth: 100
-  _health: 100
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  _maxHealth: 300
+  _health: 300
   _isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.25
@@ -810,6 +814,24 @@ MonoBehaviour:
     spawnPoint: {fileID: 2476602350055249015}
     cooldown: 2
     isOnCooldown: 0
+--- !u!114 &4639733414376496824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039554268141016944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2948bde8c8ed1a1458b09e56d0d8588a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxMana: 200
+  _currentMana: 200
+  manaRegenRate: 5
+  manaChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6221814665979556292
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,7 +843,7 @@ GameObject:
   - component: {fileID: 6497091923175058798}
   - component: {fileID: 2186438614634708598}
   - component: {fileID: 7334809512680745545}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: SwordAttack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -919,7 +941,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2476602350055249015}
   - component: {fileID: 6079103639880165133}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Skill 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
