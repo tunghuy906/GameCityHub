@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8900814905782122806}
   - component: {fileID: 247318452090127712}
   - component: {fileID: 2893953134724551601}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SwordAttack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,9 +215,10 @@ GameObject:
   - component: {fileID: 2565679507469449948}
   - component: {fileID: 6938220401511895533}
   - component: {fileID: 2225674242829653556}
+  - component: {fileID: 7634635539253891705}
   m_Layer: 8
   m_Name: Samurai 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -231,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 3980647722895736436}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.47, y: -2.22, z: 0}
+  m_LocalPosition: {x: -5.04, y: -2.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -327,8 +328,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.071950674, y: -0.61671746}
-  m_Size: {x: 0.5758624, y: 2.5750735}
+  m_Offset: {x: 0.071950674, y: -0.6395048}
+  m_Size: {x: 0.5758624, y: 2.5841887}
   m_Direction: 0
 --- !u!50 &7269031322274592949
 Rigidbody2D:
@@ -367,7 +368,7 @@ Animator:
   m_GameObject: {fileID: 3980647722895736436}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: acaa18a17f030244fbef6b6056a50dd5, type: 2}
+  m_Controller: {fileID: 22100000, guid: d8c3f8be741dfcd45a455f83b3fe661a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -662,8 +663,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _maxHealth: 100
-  _health: 100
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  _maxHealth: 300
+  _health: 300
   _isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.25
@@ -680,18 +684,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills:
-  - prefab: {fileID: 8876101698090441871, guid: f33d500dc093193489748cb074dc24a8, type: 3}
+  - prefab: {fileID: 2634357478780877746, guid: 855fded8208564043b6114b87fab190c, type: 3}
     spawnPoint: {fileID: 458672422747313141}
     cooldown: 1
     isOnCooldown: 0
-  - prefab: {fileID: 8890464381541252169, guid: 6e251b3aa58638c4993b9fdfd7a04ca5, type: 3}
+  - prefab: {fileID: 4527196429732432946, guid: d1704d524054cc74cb4c6d39c212717f, type: 3}
     spawnPoint: {fileID: 1123461739416653257}
     cooldown: 3
     isOnCooldown: 0
-  - prefab: {fileID: 5885899062533782990, guid: 83a817e2bfdd7fc45bdaae0eabe8545e, type: 3}
+  - prefab: {fileID: 2534132248338188104, guid: 4fc7b08a3a56b524b9c88e91976462f1, type: 3}
     spawnPoint: {fileID: 5346329384746291434}
     cooldown: 5
     isOnCooldown: 0
+--- !u!114 &7634635539253891705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3980647722895736436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2948bde8c8ed1a1458b09e56d0d8588a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxMana: 200
+  _currentMana: 200
+  manaRegenRate: 5
+  manaChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6813771303649410235
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,7 +893,7 @@ GameObject:
   - component: {fileID: 2537695418642580549}
   - component: {fileID: 2766562923959092389}
   - component: {fileID: 6184676745522967976}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SwordAttack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

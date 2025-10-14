@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TopDown/CatRoom.unity
     guid: d74ab35b3814e8347a482d23149e89b6
+  - enabled: 1
+    path: Assets/Scenes/Fighting/MenuFT.unity
+    guid: 01a3040e8be3c7c4eab256c691bf3df0
+  - enabled: 1
+    path: Assets/Scenes/Fighting/Fighting.unity
+    guid: 8420e173c1c784041b919aacdb6432ad
   m_configObjects: {}

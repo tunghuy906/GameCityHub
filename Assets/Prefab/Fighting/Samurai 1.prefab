@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8561041890486503122}
   - component: {fileID: 1431381111230521961}
   - component: {fileID: 7705941925238090427}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: SwordAttack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5641057944434032048}
   - component: {fileID: 2841992866149041093}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Skill 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ Transform:
   m_GameObject: {fileID: 3870369135705290287}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.21, y: 0, z: 0}
+  m_LocalPosition: {x: 1.24, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -169,7 +169,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 624061653472095769}
   - component: {fileID: 3576030310663113827}
   - component: {fileID: 885268067707624929}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: SwordAttack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2426380991587846001}
   - component: {fileID: 4303360331784572190}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Skill 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -398,7 +398,7 @@ Transform:
   m_GameObject: {fileID: 6039554268141016944}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.47, y: -2.521, z: 0}
+  m_LocalPosition: {x: -3.52, y: -2.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -494,8 +494,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.114605784, y: -0.5198307}
-  m_Size: {x: 0.78304505, y: 2.1562076}
+  m_Offset: {x: 0.071950674, y: -0.61671746}
+  m_Size: {x: 0.5758624, y: 2.5750735}
   m_Direction: 0
 --- !u!50 &2544875070432902049
 Rigidbody2D:
@@ -557,16 +557,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd9a3d8047dbaad468c6bae33a42abd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
-  jumpImpulse: 20
-  dashSpeed: 15
-  airWalkSpeed: 3
+  MoveSpeed: 8
+  jumpImpulse: 15
+  dashSpeed: 25
+  airWalkSpeed: 7
   dashTime: 0.2
-  dashCooldown: 1
-  skill1Cooldown: 3
+  dashCooldown: 0
+  skill1Cooldown: 1
   skill2Cooldown: 3
   skill3Cooldown: 5
-  comboResetTime: 0.8
+  comboResetTime: 1
   blockDamageReduction: 0.3
 --- !u!114 &6390873694298878471
 MonoBehaviour:
@@ -702,19 +702,67 @@ MonoBehaviour:
     m_ActionId: 96f6c910-7107-455a-a8a9-dcbf6d67e97e
     m_ActionName: Player/Jump[/Keyboard/w]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4361879008196469692}
+        m_TargetAssemblyTypeName: PlayerControllerFT, Assembly-CSharp
+        m_MethodName: OnBlock
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 9f970c53-c980-4f61-bc9a-bd80d27ad5ef
     m_ActionName: Player/Block[/Keyboard/k]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4361879008196469692}
+        m_TargetAssemblyTypeName: PlayerControllerFT, Assembly-CSharp
+        m_MethodName: OnSkill1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3256bcca-cd8f-4019-acb6-6856303301ba
     m_ActionName: Player/ Skill 1[/Keyboard/u]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4361879008196469692}
+        m_TargetAssemblyTypeName: PlayerControllerFT, Assembly-CSharp
+        m_MethodName: OnSkill2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 64aecca2-1b88-4810-9099-0a77b603c1f9
     m_ActionName: Player/Skill 2[/Keyboard/i]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4361879008196469692}
+        m_TargetAssemblyTypeName: PlayerControllerFT, Assembly-CSharp
+        m_MethodName: OnSkill3
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: eeedba0a-cd29-4bd4-a12a-a1f814aab79c
     m_ActionName: Player/Skill 3[/Keyboard/o]
   m_NeverAutoSwitchControlSchemes: 0
@@ -808,11 +856,11 @@ MonoBehaviour:
     isOnCooldown: 0
   - prefab: {fileID: 8890464381541252169, guid: 6e251b3aa58638c4993b9fdfd7a04ca5, type: 3}
     spawnPoint: {fileID: 2426380991587846001}
-    cooldown: 2
+    cooldown: 3
     isOnCooldown: 0
   - prefab: {fileID: 5885899062533782990, guid: 83a817e2bfdd7fc45bdaae0eabe8545e, type: 3}
     spawnPoint: {fileID: 2476602350055249015}
-    cooldown: 2
+    cooldown: 5
     isOnCooldown: 0
 --- !u!114 &4639733414376496824
 MonoBehaviour:
@@ -843,7 +891,7 @@ GameObject:
   - component: {fileID: 6497091923175058798}
   - component: {fileID: 2186438614634708598}
   - component: {fileID: 7334809512680745545}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: SwordAttack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -930,7 +978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 10
-  knockback: {x: 0, y: 0}
+  knockback: {x: 3, y: 3}
 --- !u!1 &7994125330378949687
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,7 +989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2476602350055249015}
   - component: {fileID: 6079103639880165133}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Skill 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1003,7 +1051,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

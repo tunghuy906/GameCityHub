@@ -65,7 +65,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.1793613, y: -0.80771387}
+  m_Offset: {x: 1.312784, y: -0.80771387}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.1694503, y: 1.5450828}
+  m_Size: {x: 2.4362955, y: 1.5450828}
   m_EdgeRadius: 0
 --- !u!114 &6726249463547187632
 MonoBehaviour:
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 541722271289872549}
   - component: {fileID: 4116684166401561576}
   - component: {fileID: 962894450308213200}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SwordAttack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506129040027216687}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 8950878163670396571}
   - component: {fileID: 225128132213715514}
   - component: {fileID: 3367867918899747453}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SwordAttack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2938250231994300422}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -308,9 +308,9 @@ GameObject:
   - component: {fileID: 4077556306398010830}
   - component: {fileID: 1659015085268451195}
   - component: {fileID: 3219164771509375617}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Samurai 1_AI
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,7 +324,7 @@ Transform:
   m_GameObject: {fileID: 4585105403012078920}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.93, y: -2.504, z: 0}
+  m_LocalPosition: {x: 3.93, y: -2.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -421,8 +421,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.114605784, y: -0.5198307}
-  m_Size: {x: 0.78304505, y: 2.1562076}
+  m_Offset: {x: 0.067463756, y: -0.5737237}
+  m_Size: {x: 0.63219047, y: 2.5703142}
   m_Direction: 0
 --- !u!50 &698804150001721826
 Rigidbody2D:
@@ -518,7 +518,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagableHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4077556306398010830}
+        m_TargetAssemblyTypeName: AIControllerFT, Assembly-CSharp
+        m_MethodName: OnHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   healthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -540,12 +552,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
-  jumpImpulse: 10
-  dashSpeed: 15
-  airWalkSpeed: 3
+  jumpImpulse: 15
+  dashSpeed: 25
+  airWalkSpeed: 7
   dashTime: 0.2
   dashCooldown: 1
-  target: {fileID: 5688960784575188700, guid: 6c8d85d1db0883246b549ecb77664bbd, type: 3}
+  target: {fileID: 0}
   attackRange: 1.5
   detectionRange: 10
   dashDistance: 5
@@ -553,7 +565,10 @@ MonoBehaviour:
   skill1Cooldown: 2
   skill2Cooldown: 4
   skill3Cooldown: 6
-  attackCooldown: 1
+  skill1ManaCost: 20
+  skill2ManaCost: 35
+  skill3ManaCost: 60
+  attackCooldown: 0.5
 --- !u!114 &1659015085268451195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,7 +623,7 @@ GameObject:
   - component: {fileID: 8914338551175826547}
   - component: {fileID: 1565412819912060002}
   - component: {fileID: 7890676437633793483}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SwordAttack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 10
-  knockback: {x: 1, y: 1}
+  knockback: {x: 3, y: 3}
 --- !u!60 &7890676437633793483
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -651,7 +666,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6116176426600114283}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -706,7 +721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5659340104289177528}
   - component: {fileID: 985333802362271790}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Skill 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -790,7 +805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 310323630107969693}
   - component: {fileID: 5447892707106381211}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Skill 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -806,7 +821,7 @@ Transform:
   m_GameObject: {fileID: 8428163574749557172}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.99, y: -0.44000006, z: 0}
+  m_LocalPosition: {x: 2.08, y: -0.44000006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -874,7 +889,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1765063716563925512}
   - component: {fileID: 5584706707780592261}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Skill 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
