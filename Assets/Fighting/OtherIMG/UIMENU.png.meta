@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 14add1dcddd42a64a896ac2990ecd922
+guid: 38a5a65ea76fb4349ac5025db96fc896
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,169 +97,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dragonhpbar_0
+      name: Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 112
-        height: 32
+        x: 256
+        y: 212
+        width: 287
+        height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33f00302b92462841be977961b7d45e2
-      internalID: 630178040
+      spriteID: 9c955ce3ed66642459da80328bb6bac9
+      internalID: -2015959926
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragonhpbar_1
+      name: Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_1
       rect:
         serializedVersion: 2
-        x: 112
-        y: 0
-        width: 112
-        height: 32
+        x: 256
+        y: 142
+        width: 287
+        height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91123bb883272054793fe3445a2d6c9d
-      internalID: -1969152045
+      spriteID: 875a565145200e046ac0594cd20ae6f3
+      internalID: -1013753057
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragonhpbar_2
+      name: Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_2
       rect:
         serializedVersion: 2
-        x: 224
-        y: 0
-        width: 112
-        height: 32
+        x: 256
+        y: 72
+        width: 287
+        height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc66ce6cb5af37f4cab17b44aa427a4f
-      internalID: 1821548833
+      spriteID: ba7e379507db083499e2a642e9f42347
+      internalID: -1779328804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragonhpbar_3
+      name: Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_3
       rect:
         serializedVersion: 2
-        x: 336
-        y: 0
-        width: 112
-        height: 32
+        x: 256
+        y: 2
+        width: 301
+        height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aad596f4848ffc148820ba331b834694
-      internalID: -528065325
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dragonhpbar_4
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 112
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d89ffe81c2924848896e17c749ddd2a
-      internalID: 1543560472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dragonhpbar_5
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 0
-        width: 112
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 405ba9901538b9947b365b883a45ccfc
-      internalID: -998687299
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dragonhpbar_6
-      rect:
-        serializedVersion: 2
-        x: 672
-        y: 0
-        width: 112
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48a0b0b4f92220842974345f485b10da
-      internalID: -1937230307
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dragonhpbar_7
-      rect:
-        serializedVersion: 2
-        x: 784
-        y: 0
-        width: 112
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a93d03bdd1aebe4fa7a910fc7713907
-      internalID: -1879961423
+      spriteID: 7943484e0932ad04c8e58cd66b8c8254
+      internalID: 1701945057
       vertices: []
       indices: 
       edges: []
@@ -275,14 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dragonhpbar_0: 630178040
-      dragonhpbar_1: -1969152045
-      dragonhpbar_2: 1821548833
-      dragonhpbar_3: -528065325
-      dragonhpbar_4: 1543560472
-      dragonhpbar_5: -998687299
-      dragonhpbar_6: -1937230307
-      dragonhpbar_7: -1879961423
+      Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_0: -2015959926
+      Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_1: -1013753057
+      Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_2: -1779328804
+      Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_3: 1701945057
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

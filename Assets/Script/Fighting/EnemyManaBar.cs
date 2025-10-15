@@ -1,44 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class EnemyManaBar : MonoBehaviour
 {
 	public Slider manaSlider;
-
 	private ManaSystem enemyMana;
 
-	private void Awake()
+	private void Start()
 	{
-		GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
+		StartCoroutine(WaitForEnemy());
+	}
 
-		if (enemy == null)
+	private IEnumerator WaitForEnemy()
+	{
+		GameObject enemy = null;
+		while (enemy == null)
 		{
-			Debug.LogError("No enemy found in the scene. Make sure it has tag 'Enemy'");
-			return;
+			enemy = GameObject.FindGameObjectWithTag("Enemy");
+			yield return null;
 		}
 
 		enemyMana = enemy.GetComponent<ManaSystem>();
-
-		if (enemyMana == null)
-		{
-			Debug.LogError("Enemy does not have a ManaSystem component!");
-		}
-	}
-
-	void Start()
-	{
-		if (enemyMana != null)
-		{
-			manaSlider.value = CalculateSliderPercentage(enemyMana.CurrentMana, enemyMana.MaxMana);
-		}
-	}
-
-	private void OnEnable()
-	{
-		if (enemyMana != null)
-			enemyMana.manaChanged.AddListener(OnManaChanged);
+		enemyMana.manaChanged.AddListener(OnManaChanged);
+		UpdateManaBar(enemyMana.CurrentMana, enemyMana.MaxMana);
 	}
 
 	private void OnDisable()
@@ -47,13 +32,13 @@ public class EnemyManaBar : MonoBehaviour
 			enemyMana.manaChanged.RemoveListener(OnManaChanged);
 	}
 
-	private float CalculateSliderPercentage(float currentMana, float maxMana)
-	{
-		return currentMana / maxMana;
-	}
-
 	private void OnManaChanged(int newMana, int maxMana)
 	{
-		manaSlider.value = CalculateSliderPercentage(newMana, maxMana);
+		UpdateManaBar(newMana, maxMana);
+	}
+
+	private void UpdateManaBar(float currentMana, float maxMana)
+	{
+		manaSlider.value = currentMana / maxMana;
 	}
 }

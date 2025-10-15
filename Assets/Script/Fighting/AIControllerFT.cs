@@ -13,7 +13,7 @@ public class AIControllerFT : MonoBehaviour
 	public float dashCooldown = 1f;
 
 	[Header("AI Settings")]
-	public Transform target;
+	private Transform target;
 	public float attackRange = 1.5f;
 	public float detectionRange = 10f;
 	public float dashDistance = 5f;
@@ -115,6 +115,16 @@ public class AIControllerFT : MonoBehaviour
 		touchingDirections = GetComponent<TouchingDirections>();
 		damageable = GetComponent<Damageable>();
 		manaSystem = GetComponent<ManaSystem>(); // thêm phần mana
+
+		GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+		if (playerObj != null)
+		{
+			target = playerObj.transform;
+		}
+		else
+		{
+			Debug.LogWarning("AIControllerFT: Không tìm thấy GameObject với tag 'Player'!");
+		}
 	}
 
 	private void FixedUpdate()
@@ -274,6 +284,7 @@ public class AIControllerFT : MonoBehaviour
 	private IEnumerator DashRandom()
 	{
 		if (IsBlocking) yield break;
+		if (target == null) yield break;
 
 		canDash = false;
 		isDashing = true;
@@ -282,9 +293,12 @@ public class AIControllerFT : MonoBehaviour
 		float originalGravity = rb.gravityScale;
 		rb.gravityScale = 0;
 
-		int dir = Random.value < 0.5f ? -1 : 1;
-		rb.velocity = new Vector2(dir * dashSpeed, 0);
+		// 👉 Dash theo hướng của player
+		int dir = target.position.x > transform.position.x ? 1 : -1;
 		IsFacingRight = dir > 0;
+
+		// Giữ hướng dash theo player
+		rb.velocity = new Vector2(dir * dashSpeed, 0);
 
 		yield return new WaitForSeconds(dashTime);
 
@@ -295,6 +309,7 @@ public class AIControllerFT : MonoBehaviour
 		yield return new WaitForSeconds(dashCooldown);
 		canDash = true;
 	}
+
 
 	public void TryBlock()
 	{

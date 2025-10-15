@@ -65,7 +65,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.312784, y: -0.80771387}
+  m_Offset: {x: 1.606535, y: -0.80771387}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4362955, y: 1.5450828}
+  m_Size: {x: 1.8487935, y: 1.5450828}
   m_EdgeRadius: 0
 --- !u!114 &6726249463547187632
 MonoBehaviour:
@@ -182,14 +182,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.0099282, y: -0.1275338}
-      - {x: 0.8755588, y: -0.31519526}
-      - {x: 0.82037216, y: -1.0745369}
+    - - {x: 0.8618164, y: -0.045249104}
+      - {x: 0.7439031, y: -0.30696696}
+      - {x: 0.5159188, y: -0.9757954}
       - {x: 1.0363694, y: -1.172991}
-      - {x: 1.7854769, y: -1.3615344}
-      - {x: 2.456772, y: -1.1447182}
-      - {x: 2.454758, y: -0.427953}
-      - {x: 1.6003461, y: -0.2587157}
+      - {x: 1.7937052, y: -1.435591}
+      - {x: 2.4896858, y: -1.1447182}
+      - {x: 2.4712145, y: -0.3703537}
+      - {x: 1.625031, y: -0.12706023}
   m_UseDelaunayMesh: 0
 --- !u!1 &2938250231994300422
 GameObject:
@@ -283,11 +283,11 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.51792145, y: 0.35585046}
-      - {x: 0.19690078, y: 0.13460425}
-      - {x: 0.3603626, y: -0.32657754}
-      - {x: 1.529349, y: -0.5933387}
-      - {x: 1.8425753, y: -0.099508524}
-      - {x: 1.8141286, y: 0.59939396}
+      - {x: 0.1722154, y: 0.24157456}
+      - {x: 0.0723663, y: -0.35126293}
+      - {x: 1.628091, y: -0.70030904}
+      - {x: 2.0236008, y: -0.19002151}
+      - {x: 2.0527542, y: 0.65699315}
       - {x: 1.3671513, y: 0.72607404}
   m_UseDelaunayMesh: 0
 --- !u!1 &4585105403012078920
@@ -377,7 +377,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 10
   m_Sprite: {fileID: 661488350, guid: f35d17bb18002984baedfa9e524d27de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -557,7 +557,6 @@ MonoBehaviour:
   airWalkSpeed: 7
   dashTime: 0.2
   dashCooldown: 1
-  target: {fileID: 0}
   attackRange: 1.5
   detectionRange: 10
   dashDistance: 5
@@ -703,13 +702,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.47363997, y: 0.25767565}
-      - {x: 0.31642288, y: -0.06459901}
-      - {x: 0.24688983, y: -0.9460521}
-      - {x: 0.26573616, y: -0.9586159}
-      - {x: 1.8643805, y: -0.9984169}
-      - {x: 2.4207985, y: -0.40617585}
-      - {x: 2.3605137, y: 0.25904506}
+    - - {x: 0.20210123, y: 0.3070464}
+      - {x: 0.06956905, y: -0.031685084}
+      - {x: -0.11516261, y: -0.7403405}
+      - {x: -0.121002376, y: -1.0491291}
+      - {x: 1.9302083, y: -1.0724735}
+      - {x: 2.5359972, y: -0.48023224}
+      - {x: 2.467483, y: 0.291959}
   m_UseDelaunayMesh: 0
 --- !u!1 &7235390805045398913
 GameObject:

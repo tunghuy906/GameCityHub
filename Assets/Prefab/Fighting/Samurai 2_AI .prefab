@@ -91,14 +91,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.0099282, y: -0.1275338}
-      - {x: 0.8755588, y: -0.31519526}
-      - {x: 0.82037216, y: -1.0745369}
+    - - {x: 0.9269738, y: 0.088148}
+      - {x: 0.5188541, y: -0.3981499}
+      - {x: 0.54662186, y: -1.0911282}
       - {x: 1.0363694, y: -1.172991}
-      - {x: 1.7854769, y: -1.3615344}
+      - {x: 1.9264991, y: -1.4610796}
       - {x: 2.456772, y: -1.1447182}
       - {x: 2.454758, y: -0.427953}
-      - {x: 1.6003461, y: -0.2587157}
+      - {x: 1.7247777, y: -0.101101935}
   m_UseDelaunayMesh: 0
 --- !u!1 &1302465749419934924
 GameObject:
@@ -355,7 +355,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 10
   m_Sprite: {fileID: 881430178, guid: 64b1c869b46ab3344974bda8dfd80e64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -535,7 +535,6 @@ MonoBehaviour:
   airWalkSpeed: 7
   dashTime: 0.2
   dashCooldown: 1
-  target: {fileID: 0}
   attackRange: 1.5
   detectionRange: 10
   dashDistance: 5
@@ -681,13 +680,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.51792145, y: 0.35585046}
-      - {x: 0.19690078, y: 0.13460425}
-      - {x: 0.3603626, y: -0.32657754}
-      - {x: 1.529349, y: -0.5933387}
-      - {x: 1.8425753, y: -0.099508524}
-      - {x: 1.8141286, y: 0.59939396}
-      - {x: 1.3671513, y: 0.72607404}
+    - - {x: 0.4266715, y: 0.44710052}
+      - {x: 0.13053745, y: 0.15119508}
+      - {x: 0.20274931, y: -0.32657754}
+      - {x: 1.6786672, y: -0.82561135}
+      - {x: 2.0250752, y: -0.19075847}
+      - {x: 2.112765, y: 0.65746224}
+      - {x: 1.51647, y: 0.7592558}
   m_UseDelaunayMesh: 0
 --- !u!1 &6402017752032756454
 GameObject:
@@ -838,7 +837,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.312784, y: -0.80771387}
+  m_Offset: {x: 1.5904984, y: -0.80771387}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -849,7 +848,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4362955, y: 1.5450828}
+  m_Size: {x: 1.8808665, y: 1.5450828}
   m_EdgeRadius: 0
 --- !u!114 &2337632835827979777
 MonoBehaviour:
@@ -955,11 +954,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.47363997, y: 0.25767565}
-      - {x: 0.31642288, y: -0.06459901}
+    - - {x: 0.22477627, y: 0.44017577}
+      - {x: 0.08414954, y: -0.06459901}
       - {x: 0.24688983, y: -0.9460521}
-      - {x: 0.26573616, y: -0.9586159}
-      - {x: 1.8643805, y: -0.9984169}
-      - {x: 2.4207985, y: -0.40617585}
-      - {x: 2.3605137, y: 0.25904506}
+      - {x: 0.0832358, y: -0.9503206}
+      - {x: 1.9639264, y: -1.180917}
+      - {x: 2.4705722, y: -0.50572157}
+      - {x: 2.418582, y: 0.4415452}
   m_UseDelaunayMesh: 0

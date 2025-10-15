@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 38a5a65ea76fb4349ac5025db96fc896
+guid: f2a665bdfaffc5947932bfcaf1e5c302
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,85 +97,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_0
+      name: BlueRed_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 212.25
-        width: 881
-        height: 70.75
+        y: 256
+        width: 334
+        height: 281
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c955ce3ed66642459da80328bb6bac9
-      internalID: -2015959926
+      spriteID: 69e58301420f19b4a9856a5df9c7190a
+      internalID: -584945321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_1
+      name: BlueRed_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 142.25
-        width: 881
-        height: 70.75
+        x: 451
+        y: 260
+        width: 345
+        height: 272
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 875a565145200e046ac0594cd20ae6f3
-      internalID: -1013753057
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 72.25
-        width: 881
-        height: 70.75
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ba7e379507db083499e2a642e9f42347
-      internalID: -1779328804
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2.25
-        width: 881
-        height: 70.75
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7943484e0932ad04c8e58cd66b8c8254
-      internalID: 1701945057
+      spriteID: 0ea3c1357de72a044be52eb79bf4c1d1
+      internalID: 2047020874
       vertices: []
       indices: 
       edges: []
@@ -191,10 +149,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_0: -2015959926
-      Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_1: -1013753057
-      Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_2: -1779328804
-      Gemini_Generated_Image_y0u9e0y0u9e0y0u9-removebg-preview_3: 1701945057
+      BlueRed_0: -584945321
+      BlueRed_1: 2047020874
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
