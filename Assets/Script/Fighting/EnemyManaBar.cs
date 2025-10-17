@@ -17,6 +17,7 @@ public class EnemyManaBar : MonoBehaviour
 		GameObject enemy = null;
 		while (enemy == null)
 		{
+			yield return new WaitForSeconds(0.1f);
 			enemy = GameObject.FindGameObjectWithTag("Enemy");
 			yield return null;
 		}

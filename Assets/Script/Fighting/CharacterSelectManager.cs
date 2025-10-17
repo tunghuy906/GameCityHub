@@ -15,48 +15,26 @@ public class CharacterSelectManager : MonoBehaviour
 	[Tooltip("Index của scene Main Menu trong Build Settings")]
 	public int mainMenuSceneIndex = 0;
 
-	[Header("Mũi tên hiển thị (Prefab)")]
-	[Tooltip("Prefab hoặc object của mũi tên (tam giác ngược có SpriteRenderer + TextMesh)")]
-	public GameObject arrowPrefab;
+	[Header("UI Labels")]
+	public GameObject playerLabelUI; // Hình ảnh/ chữ "PLAYER" trên Canvas
+	public GameObject enemyLabelUI;  // Hình ảnh/ chữ "ENEMY" trên Canvas
 
-	private int currentSelectedCharacterIndex = -1;
-	private int selectedPlayerIndex = -1;
-	private int selectedEnemyIndex = -1;
+	private int currentSelectedCharacterIndex = -1; // nhân vật đang được click ảnh
+	private int selectedPlayerIndex = -1; // nhân vật được chọn làm Player
+	private int selectedEnemyIndex = -1; // nhân vật được chọn làm Enemy
 
-	private GameObject currentArrow;        // mũi tên tạm thời (chỉ hiện khi click chọn)
-	private GameObject playerArrow;         // mũi tên cố định cho Player
-	private GameObject enemyArrow;          // mũi tên cố định cho Enemy
+	void Start()
+	{
+		// Ẩn label khi bắt đầu
+		playerLabelUI.SetActive(false);
+		enemyLabelUI.SetActive(false);
+	}
 
-	// 🟢 Khi click vào ảnh hoặc object nhân vật
+	// 🟢 Gọi khi click vào ảnh nhân vật trong UI
 	public void SelectCharacter(int index)
 	{
 		currentSelectedCharacterIndex = index;
 		Debug.Log("Đang chọn nhân vật số: " + index + " - " + playerPrefabs[index].name);
-
-		// Tìm object trong scene (đặt tên giống prefab)
-		GameObject target = GameObject.Find(playerPrefabs[index].name);
-		if (target == null)
-		{
-			Debug.LogWarning("⚠️ Không tìm thấy object nhân vật trong scene!");
-			return;
-		}
-
-		// Xóa mũi tên tạm cũ (nếu có)
-		if (currentArrow != null)
-			Destroy(currentArrow);
-
-		// Tạo mũi tên tạm thời (màu xám, không chữ)
-		if (arrowPrefab != null)
-		{
-			Vector3 spawnPos = target.transform.position + Vector3.up * 2f;
-			currentArrow = Instantiate(arrowPrefab, spawnPos, Quaternion.identity);
-			currentArrow.transform.SetParent(target.transform);
-			SetArrow(currentArrow, Color.gray, ""); // mũi tên tạm màu xám
-		}
-		else
-		{
-			Debug.LogWarning("⚠️ Chưa gán Arrow Prefab vào CharacterSelectManager!");
-		}
 	}
 
 	// 🟠 Khi ấn vào nút "Chọn làm Player"
@@ -71,22 +49,9 @@ public class CharacterSelectManager : MonoBehaviour
 		selectedPlayerIndex = currentSelectedCharacterIndex;
 		Debug.Log("✅ Đã chọn " + playerPrefabs[selectedPlayerIndex].name + " làm Player!");
 
-		GameObject target = GameObject.Find(playerPrefabs[selectedPlayerIndex].name);
-		if (target == null) return;
-
-		// Xóa mũi tên Player cũ (nếu có)
-		if (playerArrow != null)
-			Destroy(playerArrow);
-
-		// Tạo mũi tên mới (xanh, chữ PLAYER)
-		Vector3 spawnPos = target.transform.position + Vector3.up * 2f;
-		playerArrow = Instantiate(arrowPrefab, spawnPos, Quaternion.identity);
-		playerArrow.transform.SetParent(target.transform);
-		SetArrow(playerArrow, Color.green, "PLAYER");
-
-		// Xóa mũi tên tạm nếu trùng
-		if (currentArrow != null)
-			Destroy(currentArrow);
+		// Hiển thị label PLAYER, ẩn label ENEMY
+		playerLabelUI.SetActive(true);
+		enemyLabelUI.SetActive(false);
 	}
 
 	// 🔵 Khi ấn vào nút "Chọn làm Enemy"
@@ -101,36 +66,9 @@ public class CharacterSelectManager : MonoBehaviour
 		selectedEnemyIndex = currentSelectedCharacterIndex;
 		Debug.Log("✅ Đã chọn " + enemyPrefabs[selectedEnemyIndex].name + " làm Enemy!");
 
-		GameObject target = GameObject.Find(playerPrefabs[selectedEnemyIndex].name);
-		if (target == null) return;
-
-		// Xóa mũi tên Enemy cũ (nếu có)
-		if (enemyArrow != null)
-			Destroy(enemyArrow);
-
-		// Tạo mũi tên mới (đỏ, chữ ENEMY)
-		Vector3 spawnPos = target.transform.position + Vector3.up * 2f;
-		enemyArrow = Instantiate(arrowPrefab, spawnPos, Quaternion.identity);
-		enemyArrow.transform.SetParent(target.transform);
-		SetArrow(enemyArrow, Color.red, "ENEMY");
-
-		// Xóa mũi tên tạm nếu trùng
-		if (currentArrow != null)
-			Destroy(currentArrow);
-	}
-
-	// ⚙️ Hàm đổi màu + hiển thị chữ trên mũi tên
-	private void SetArrow(GameObject arrow, Color color, string labelText)
-	{
-		if (arrow == null) return;
-
-		SpriteRenderer sr = arrow.GetComponentInChildren<SpriteRenderer>();
-		TextMesh textMesh = arrow.GetComponentInChildren<TextMesh>();
-
-		if (sr != null)
-			sr.color = color;
-		if (textMesh != null)
-			textMesh.text = labelText;
+		// Hiển thị label ENEMY, ẩn label PLAYER
+		playerLabelUI.SetActive(false);
+		enemyLabelUI.SetActive(true);
 	}
 
 	// 🔥 Khi nhấn nút Fight
@@ -138,10 +76,11 @@ public class CharacterSelectManager : MonoBehaviour
 	{
 		if (selectedPlayerIndex < 0 || selectedEnemyIndex < 0)
 		{
-			Debug.LogWarning("⚠️ Chưa chọn đủ Player hoặc Enemy!");
+			Debug.LogWarning("⚠️ Chưa chọn đủ player hoặc enemy!");
 			return;
 		}
 
+		// Lưu index sang scene đấu
 		PlayerPrefs.SetInt("SelectedPlayerIndex", selectedPlayerIndex);
 		PlayerPrefs.SetInt("SelectedEnemyIndex", selectedEnemyIndex);
 		PlayerPrefs.Save();

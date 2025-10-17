@@ -17,6 +17,7 @@ public class ManaBar : MonoBehaviour
 		GameObject player = null;
 		while (player == null)
 		{
+			yield return new WaitForSeconds(0.1f);
 			player = GameObject.FindGameObjectWithTag("Player");
 			yield return null;
 		}

@@ -105,7 +105,7 @@ public class PlayerManagers : MonoBehaviour
 		currentCharacterIndex = characterIndex;
 		DontDestroyOnLoad(playerInstance);
 		// tuỳ chọn: đặt tag để dễ tìm
-		playerInstance.tag = "Player";
+		playerInstance.tag = "PlayerPF";
 	}
 
 	void ResetVelocity(GameObject go)

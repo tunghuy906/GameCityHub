@@ -81,7 +81,7 @@ public class CatMovement : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.gameObject.CompareTag("Player"))
+		if (collision.gameObject.CompareTag("PlayerTD"))
 		{
 			// nếu chạm player muốn dừng thì gọi SetCanMove(false)
 			SetCanMove(false);

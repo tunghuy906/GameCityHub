@@ -43,6 +43,7 @@ public class HealthBar : MonoBehaviour
 		// đợi player có tag "Player"
 		while (player == null)
 		{
+			yield return new WaitForSeconds(0.1f);
 			player = GameObject.FindGameObjectWithTag("Player");
 			yield return null;
 		}
