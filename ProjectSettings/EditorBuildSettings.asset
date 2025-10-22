@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fighting/Fighting.unity
     guid: 8420e173c1c784041b919aacdb6432ad
+  - enabled: 1
+    path: Assets/Scenes/2048Game/Mainmenu2048.unity
+    guid: c20cd6fecc8b86c4393b0545210958bf
+  - enabled: 1
+    path: Assets/Scenes/2048Game/2048GamePlay.unity
+    guid: c26872951086e1741bb425ee9f28bc86
   m_configObjects: {}
