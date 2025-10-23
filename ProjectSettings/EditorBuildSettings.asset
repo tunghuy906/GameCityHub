@@ -35,4 +35,43 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/2048Game/2048GamePlay.unity
     guid: c26872951086e1741bb425ee9f28bc86
+  - enabled: 1
+    path: Assets/Scenes/FishFishFish/MainScene.unity
+    guid: 4513178d137de9f4aa7e79fbd753c4d2
+  - enabled: 1
+    path: Assets/Scenes/FishFishFish/LevelSelect.unity
+    guid: 8b05358975b173245904c13f352aadb1
+  - enabled: 1
+    path: Assets/Scenes/FishFishFish/Tutorial.unity
+    guid: b21c12d2f52badc4d92a17a18c0b0726
+  - enabled: 1
+    path: Assets/Scenes/FishFishFish/Level1.unity
+    guid: f02007c3b6d230241a65b96b5da9d58a
+  - enabled: 1
+    path: Assets/Scenes/FishFishFish/Level2.unity
+    guid: 2a1a4c83d675fbf49bafe19299557fe7
+  - enabled: 1
+    path: Assets/Scenes/FishFishFish/Level3.unity
+    guid: 04acc00dc6491ad4486f6c0afdbc87e4
+  - enabled: 1
+    path: Assets/Scenes/FishFishFish/Level4.unity
+    guid: ff6d989268cc0dd4a8876eabe6cff198
+  - enabled: 1
+    path: Assets/Scenes/FishFishFish/Level5.unity
+    guid: 60c54ae385bba9649ad0bb98ff85edb7
+  - enabled: 1
+    path: Assets/Scenes/FishFishFish/Level6.unity
+    guid: 3814b2760958b524bb1844165bd0272c
+  - enabled: 1
+    path: Assets/Scenes/FishFishFish/Level7.unity
+    guid: a133ccfcaba563c44905b599b30f9b90
+  - enabled: 1
+    path: Assets/Scenes/FishFishFish/Level8.unity
+    guid: a0d2ea62c3a8fb24996a37ee4a65f15f
+  - enabled: 1
+    path: Assets/Scenes/FishFishFish/Level9.unity
+    guid: 60434e96c1a19514391c535ff1984045
+  - enabled: 1
+    path: Assets/Scenes/FishFishFish/Level10.unity
+    guid: 2f504153c0e782448a7c108718b66d00
   m_configObjects: {}
