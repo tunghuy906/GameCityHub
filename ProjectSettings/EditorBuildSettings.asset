@@ -74,4 +74,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FishFishFish/Level10.unity
     guid: 2f504153c0e782448a7c108718b66d00
+  - enabled: 1
+    path: Assets/Scenes/BangBangST/Main Menu.unity
+    guid: f070e7bc2053e49458e96d6ec9e75156
+  - enabled: 1
+    path: Assets/Scenes/BangBangST/SampleScene.unity
+    guid: 11df8cd826e85334da0d873bb577b134
   m_configObjects: {}

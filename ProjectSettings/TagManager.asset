@@ -9,6 +9,7 @@ TagManager:
   - Projectile
   - PlayerPF
   - PlayerTD
+  - FireRange
   layers:
   - Default
   - TransparentFX
@@ -45,4 +46,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Character
+    uniqueID: 1726191313
+    locked: 0
+  - name: Bullet
+    uniqueID: 2745916501
     locked: 0
