@@ -80,4 +80,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BangBangST/SampleScene.unity
     guid: 11df8cd826e85334da0d873bb577b134
+  - enabled: 1
+    path: Assets/Scenes/Fighting/Instruct.unity
+    guid: 3158ca55f74784d4cb1a2c0e833f0b87
   m_configObjects: {}
