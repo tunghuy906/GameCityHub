@@ -143,10 +143,16 @@ public class AIControllerFT : MonoBehaviour
 		animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
 	}
 
+	private float footstepTimer = 0f;
+	[SerializeField] private float footstepInterval = 0.35f; // thời gian giữa 2 tiếng bước chân
+	[SerializeField] private float decisionCooldown = 0.4f; // tần suất quyết định hành động (giảm spam)
+	private float decisionTimer = 0f;
+
 	private void Update()
 	{
 		if (!IsAlive || target == null) return;
 
+		// Khi đang block, AI đứng yên
 		if (IsBlocking)
 		{
 			moveInput = Vector2.zero;
@@ -154,8 +160,13 @@ public class AIControllerFT : MonoBehaviour
 			return;
 		}
 
+		// Giảm thời gian chờ quyết định hành động
+		decisionTimer -= Time.deltaTime;
+
+		// Tính khoảng cách tới Player
 		float distance = Vector2.Distance(transform.position, target.position);
 
+		// Nếu Player ở quá xa thì dừng
 		if (distance > detectionRange)
 		{
 			moveInput = Vector2.zero;
@@ -163,27 +174,54 @@ public class AIControllerFT : MonoBehaviour
 			return;
 		}
 
+		// === KHI TRONG TẦM PHÁT HIỆN ===
+		// Nếu chưa tới gần (ngoài tầm tấn công)
 		if (Mathf.Abs(target.position.x - transform.position.x) > attackRange)
 		{
+			// Di chuyển về hướng Player
 			float dir = target.position.x > transform.position.x ? 1 : -1;
 			moveInput = new Vector2(dir, 0);
 			IsMoving = true;
 			SetFacingDirection(moveInput);
 
+			// 🔊 Phát tiếng bước chân (có cooldown)
+			if (touchingDirections.IsGrounded && IsMoving)
+			{
+				footstepTimer -= Time.deltaTime;
+				if (footstepTimer <= 0f)
+				{
+					if (AudioManager_Fight.instance != null)
+						AudioManager_Fight.instance.PlayMove();
+
+					footstepTimer = footstepInterval;
+				}
+			}
+
+			// Ngẫu nhiên dash về phía player
 			if (canDash && Random.value < 0.01f)
 				StartCoroutine(DashRandom());
 		}
 		else
 		{
+			// Đã tới gần → ngừng di chuyển
 			moveInput = Vector2.zero;
 			IsMoving = false;
 
-			if (Random.value < 0.7f)
-				TryAttack();
-			else
-				TryUseSkill();
+			// Chỉ quyết định hành động mỗi vài phần giây để tránh spam
+			if (decisionTimer <= 0f)
+			{
+				decisionTimer = decisionCooldown;
+
+				float roll = Random.value;
+
+				if (roll < 0.7f)
+					TryAttack();       // 70% khả năng tấn công
+				else
+					TryUseSkill();     // 30% khả năng dùng skill
+			}
 		}
 	}
+
 
 	// --- Combat Actions ---
 	private void TryUseSkill()
@@ -202,6 +240,8 @@ public class AIControllerFT : MonoBehaviour
 					{
 						Debug.Log("AI dùng Skill 1 (tầm xa)");
 						animator.SetTrigger(AnimationStrings.Skill1);
+						if (AudioManager_Fight.instance != null)
+							AudioManager_Fight.instance.PlaySkill1();
 						StartCoroutine(Skill1CooldownRoutine());
 					}
 					break;
@@ -211,6 +251,8 @@ public class AIControllerFT : MonoBehaviour
 					{
 						Debug.Log("AI dùng Skill 2 (tầm gần)");
 						animator.SetTrigger(AnimationStrings.Skill2);
+						if (AudioManager_Fight.instance != null)
+							AudioManager_Fight.instance.PlaySkill2();
 						StartCoroutine(Skill2CooldownRoutine());
 					}
 					break;
@@ -220,6 +262,8 @@ public class AIControllerFT : MonoBehaviour
 					{
 						Debug.Log("AI dùng Skill 3 (tất sát)");
 						animator.SetTrigger(AnimationStrings.Skill3);
+						if (AudioManager_Fight.instance != null)
+							AudioManager_Fight.instance.PlaySkill2();
 						StartCoroutine(Skill3CooldownRoutine());
 					}
 					break;
@@ -296,7 +340,8 @@ public class AIControllerFT : MonoBehaviour
 		// 👉 Dash theo hướng của player
 		int dir = target.position.x > transform.position.x ? 1 : -1;
 		IsFacingRight = dir > 0;
-
+		if (AudioManager_Fight.instance != null)
+			AudioManager_Fight.instance.PlayDash();
 		// Giữ hướng dash theo player
 		rb.velocity = new Vector2(dir * dashSpeed, 0);
 
@@ -323,6 +368,8 @@ public class AIControllerFT : MonoBehaviour
 	{
 		IsBlocking = true;
 		Debug.Log("AI START BLOCK");
+		if (AudioManager_Fight.instance != null)
+			AudioManager_Fight.instance.PlayHurt(); // 🛡 âm bắt đầu đỡ
 
 		yield return new WaitForSeconds(Random.Range(0.5f, 1f));
 
@@ -333,6 +380,9 @@ public class AIControllerFT : MonoBehaviour
 	// --- Hit Reaction ---
 	public void OnHit(int damage, Vector2 knockback)
 	{
+		if (AudioManager_Fight.instance != null)
+			AudioManager_Fight.instance.PlayHurt(); // bị đánh trúng
+
 		rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
 
 		// hồi mana khi bị đánh
@@ -368,6 +418,14 @@ public class AIControllerFT : MonoBehaviour
 		{
 			animator.SetTrigger(AnimationStrings.jump);
 			rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+			if (AudioManager_Fight.instance != null)
+				AudioManager_Fight.instance.PlayJump();
+
 		}
+	}
+	public void PlayAttackSFX()
+	{
+		if (AudioManager_Fight.instance != null)
+			AudioManager_Fight.instance.PlayAttack();
 	}
 }

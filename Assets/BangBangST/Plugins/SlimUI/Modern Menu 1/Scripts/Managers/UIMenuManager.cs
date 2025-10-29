@@ -24,7 +24,8 @@ namespace SlimUI.ModernMenu{
         public enum Theme {custom1, custom2, custom3};
         [Header("THEME SETTINGS")]
         public Theme theme;
-        private int themeIndex;
+
+		private int themeIndex;
         public ThemedUIData themeController;
 
         [Header("PANELS")]

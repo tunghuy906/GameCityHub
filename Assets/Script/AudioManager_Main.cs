@@ -17,7 +17,6 @@ public class AudioManager_Main : MonoBehaviour
 	public AudioClip topDownMusic;
 	public AudioClip catRoomMusic;
 
-	// ✅ Danh sách scene được phép giữ nhạc
 	private readonly HashSet<string> allowedScenes = new HashSet<string>
 	{
 		"Menu",
@@ -30,20 +29,17 @@ public class AudioManager_Main : MonoBehaviour
 	{
 		string currentScene = SceneManager.GetActiveScene().name;
 
-		// Nếu scene hiện tại không nằm trong danh sách => hủy ngay
+		// Nếu scene hiện tại không nằm trong 4 scene chính => tự huỷ
 		if (!allowedScenes.Contains(currentScene))
 		{
 			Destroy(gameObject);
 			return;
 		}
 
-		// Kiểm tra instance
 		if (instance == null)
 		{
 			instance = this;
 			DontDestroyOnLoad(gameObject);
-
-			// 🔹 Đăng ký event khi load scene
 			SceneManager.sceneLoaded += OnSceneLoaded;
 		}
 		else
@@ -56,21 +52,23 @@ public class AudioManager_Main : MonoBehaviour
 	{
 		string sceneName = scene.name;
 
-		// Nếu scene KHÔNG thuộc allowedScenes => hủy AudioManager
 		if (!allowedScenes.Contains(sceneName))
 		{
-			// ⚠️ Gỡ đăng ký event TRƯỚC khi destroy
 			SceneManager.sceneLoaded -= OnSceneLoaded;
-
 			Destroy(gameObject);
 			return;
 		}
 
-		// 🔹 Kiểm tra xem object có bị hủy chưa
-		if (this == null || musicSource == null)
-			return;
+		// đảm bảo musicSource và mixer đã sẵn sàng trước khi Play
+		StartCoroutine(PlaySceneMusicWithDelay(sceneName));
+	}
 
-		// 🔹 Phát nhạc tương ứng với scene
+	private System.Collections.IEnumerator PlaySceneMusicWithDelay(string sceneName)
+	{
+		// chờ AudioSource và mixer group sẵn sàng
+		yield return new WaitUntil(() => musicSource != null && mainMixer != null && mainMixer.FindMatchingGroups("Music").Length > 0);
+		yield return new WaitForSeconds(0.05f); // nhỏ, đủ để ổn định
+
 		switch (sceneName)
 		{
 			case "Menu":
@@ -106,7 +104,6 @@ public class AudioManager_Main : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		// Gỡ event khi object bị phá hủy (phòng ngừa leak)
 		SceneManager.sceneLoaded -= OnSceneLoaded;
 	}
 }

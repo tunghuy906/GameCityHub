@@ -97,7 +97,8 @@ public class Grid : MonoBehaviour
        // int _y = yDim - 1;
         while (needsRefill)
         {
-            yield return new WaitForSeconds(fillTime);
+			AudioManager_Match3.instance.PlayCombo();
+			yield return new WaitForSeconds(fillTime);
             while (FillStep())
             {
               
@@ -236,10 +237,12 @@ public class Grid : MonoBehaviour
             {
                 pieces[piece1.X, piece1.Y] = piece1;
                 pieces[piece2.X, piece2.Y] = piece2;
-            }
-           
 
-        }
+				AudioManager_Match3.instance.PlayFailSwap(); 
+			}
+
+
+		}
     }
 
     public void PressPiece(GamePiece piece)
@@ -256,7 +259,8 @@ public class Grid : MonoBehaviour
     {
         if(IsAdjacent(pressedPiece, enteredPiece))
         {
-            SwapPieces(pressedPiece, enteredPiece);
+			AudioManager_Match3.instance.PlaySwap();
+			SwapPieces(pressedPiece, enteredPiece);
         }
     }
 
@@ -401,7 +405,8 @@ public class Grid : MonoBehaviour
         if (pieces[x, y].IsClearable() && !pieces[x, y].ClearableComponent.IsCleared)
         {
             pieces[x, y].ClearableComponent.Clear();
-            SpawnNewPiece(x, y, PieceType.EMPTY);
+			AudioManager_Match3.instance.PlayMatch();
+			SpawnNewPiece(x, y, PieceType.EMPTY);
 
             return true;
         }

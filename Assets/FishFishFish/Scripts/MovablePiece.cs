@@ -32,7 +32,8 @@ public class MovablePiece : MonoBehaviour
 
         moveCoroutine = MoveCoroutine(newX, newY, time);
         StartCoroutine(moveCoroutine);
-        piece.transform.localPosition = piece.GridRef.GetWorldPosition(newX, newY);
+		AudioManager_Match3.instance.PlaySwap(); 
+		piece.transform.localPosition = piece.GridRef.GetWorldPosition(newX, newY);
     }
 
     private IEnumerator MoveCoroutine(int newX, int newY, float time)

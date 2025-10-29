@@ -177,6 +177,7 @@ public class PlayerControllerFT : MonoBehaviour
 		if (IsAlive)
 		{
 			IsMoving = moveInput != Vector2.zero;
+			AudioManager_Fight.instance.PlayMove();
 			SetFacingDirection(moveInput);
 		}
 		else
@@ -191,7 +192,7 @@ public class PlayerControllerFT : MonoBehaviour
 		{
 			animator.SetTrigger(AnimationStrings.jump);
 			rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
-
+			AudioManager_Fight.instance.PlayJump();
 			OnPlayerJump?.Invoke();
 		}
 	}
@@ -201,6 +202,7 @@ public class PlayerControllerFT : MonoBehaviour
 		if (context.performed && canDash)
 		{
 			StartCoroutine(Dash());
+			AudioManager_Fight.instance.PlayDash();
 		}
 	}
 
@@ -220,6 +222,7 @@ public class PlayerControllerFT : MonoBehaviour
 			if (manaSystem.UseMana(15))
 			{
 			animator.SetTrigger(AnimationStrings.Skill1);
+			AudioManager_Fight.instance.PlaySkill1();
 			StartCoroutine(Skill1CooldownRoutine());
 			}
 			else
@@ -239,6 +242,7 @@ public class PlayerControllerFT : MonoBehaviour
 			if (manaSystem.UseMana(25))
 			{
 			animator.SetTrigger(AnimationStrings.Skill2);
+			AudioManager_Fight.instance.PlaySkill2();
 			StartCoroutine(Skill2CooldownRoutine());
 			}
 			else
@@ -258,6 +262,7 @@ public class PlayerControllerFT : MonoBehaviour
 			if (manaSystem.UseMana(50))
 			{
 				animator.SetTrigger(AnimationStrings.Skill3);
+				AudioManager_Fight.instance.PlaySkill3();
 				StartCoroutine(Skill3CooldownRoutine());
 			}
 			else
@@ -300,12 +305,13 @@ public class PlayerControllerFT : MonoBehaviour
 
 		animator.SetInteger(AnimationStrings.attackStep, attackStep);
 		animator.SetTrigger(AnimationStrings.attack);
-
 		lastAttackTime = Time.time;
 
 	}
 	public void OnHit(int damage, Vector2 knockback)
 	{
+		if (AudioManager_Fight.instance != null)
+			AudioManager_Fight.instance.PlayHurt();
 		rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
 		if (manaSystem != null)
 		{
@@ -318,6 +324,7 @@ public class PlayerControllerFT : MonoBehaviour
 		if (context.started)
 		{
 			IsBlocking = true;
+			AudioManager_Fight.instance.PlayHurt();
 			Debug.Log(">>> BLOCK START");
 		}
 		else if (context.canceled)
@@ -356,5 +363,10 @@ public class PlayerControllerFT : MonoBehaviour
 		{
 			IsFacingRight = false;
 		}
+	}
+	public void PlayAttackSFX()
+	{
+		if (AudioManager_Fight.instance != null)
+			AudioManager_Fight.instance.PlayAttack(); 
 	}
 }

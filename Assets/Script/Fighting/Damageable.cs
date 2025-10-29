@@ -129,7 +129,8 @@ public class Damageable : MonoBehaviour
 
 				LockVelocity = true;
 				animator.SetTrigger(AnimationStrings.blockHit);
-
+				if (AudioManager_Fight.instance != null)
+					AudioManager_Fight.instance.PlayBlock();
 				StartCoroutine(UnlockVelocityAfterAnim(0.2f));
 			}
 			else

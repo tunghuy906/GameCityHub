@@ -70,7 +70,8 @@ public class TileBoard : MonoBehaviour
         }
 
         if (changed) {
-            StartCoroutine(WaitForChanges());
+			AudioManager_2048.instance.PlayMoveSound();
+			StartCoroutine(WaitForChanges());
         }
     }
 

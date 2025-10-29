@@ -36,9 +36,9 @@ public class ClearablePiece : MonoBehaviour
         piece.GridRef.level.OnPieceCleared(piece);
         isCleared = true;
         StartCoroutine(ClearCoroutine());
-
-    }
-    private IEnumerator ClearCoroutine()
+		//AudioManager_Match3.instance.PlayMatch();
+	}
+	private IEnumerator ClearCoroutine()
     {
         Animator animator = GetComponent<Animator>();
 

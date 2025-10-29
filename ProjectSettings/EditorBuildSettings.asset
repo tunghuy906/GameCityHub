@@ -42,9 +42,6 @@ EditorBuildSettings:
     path: Assets/Scenes/FishFishFish/LevelSelect.unity
     guid: 8b05358975b173245904c13f352aadb1
   - enabled: 1
-    path: Assets/Scenes/FishFishFish/Tutorial.unity
-    guid: b21c12d2f52badc4d92a17a18c0b0726
-  - enabled: 1
     path: Assets/Scenes/FishFishFish/Level1.unity
     guid: f02007c3b6d230241a65b96b5da9d58a
   - enabled: 1
@@ -80,7 +77,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BangBangST/SampleScene.unity
     guid: 11df8cd826e85334da0d873bb577b134
-  - enabled: 1
-    path: Assets/Scenes/Fighting/Instruct.unity
-    guid: 3158ca55f74784d4cb1a2c0e833f0b87
   m_configObjects: {}

@@ -1,83 +1,94 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class SpawnerManager : MonoBehaviour
 {
-    public float startTimeBtwSpawn;
-    private float timeBtwSpawn;
+	public float startTimeBtwSpawn;
+	private float timeBtwSpawn;
 
-    public GameObject[] enemies;
+	public GameObject[] enemies;
+	public WeaponManager weaponManager;
+	public List<Spawner> spawners;
 
-    public WeaponManager weaponManager;
+	private Player player;
+	int maxEnemy = 5;
+	int roundCount = 0;
 
-    public List<Spawner> spawners;
+	private void Start()
+	{
+		player = FindObjectOfType<Player>();
+	}
 
-    private Player player;
-    int maxEnemy = 5;
-    int roundCount = 0;
+	public List<int> GetRandomIndices(int n, int k)
+	{
+		List<int> allIndices = new List<int>();
+		for (int i = 0; i < n; i++)
+		{
+			allIndices.Add(i);
+		}
 
-    private void Start()
-    {
-        player = FindObjectOfType<Player>();
-    }
+		List<int> randomIndices = new List<int>();
 
-    public List<int> GetRandomIndices(int n, int k)
-    {
+		int remainingItems = n;
+		for (int i = 0; i < Mathf.Min(k, n); i++)
+		{
+			int randomIndex = UnityEngine.Random.Range(0, remainingItems);
+			randomIndices.Add(allIndices[randomIndex]);
+			allIndices[randomIndex] = allIndices[remainingItems - 1];
+			remainingItems--;
+		}
 
-        // Create a list containing all indices from 0 to n-1
-        List<int> allIndices = new List<int>();
-        for (int i = 0; i < n; i++)
-        {
-            allIndices.Add(i);
-        }
+		return randomIndices;
+	}
 
-        // Create a list to store the randomly selected indices
-        List<int> randomIndices = new List<int>();
+	private void Update()
+	{
+		if (timeBtwSpawn <= 0)
+		{
+			if (spawners == null || spawners.Count == 0)
+			{
+				Debug.LogWarning("SpawnerManager: No spawners assigned!");
+				return;
+			}
 
-        // Use Fisher-Yates shuffle algorithm to randomly shuffle the indices
-        int remainingItems = n;
-        for (int i = 0; i < k; i++)
-        {
-            int randomIndex = UnityEngine.Random.Range(0, remainingItems);
-            randomIndices.Add(allIndices[randomIndex]);
-            // Move the last index in the list to the current position
-            allIndices[randomIndex] = allIndices[remainingItems - 1];
-            remainingItems--;
-        }
+			int randEnemyCount = UnityEngine.Random.Range(2, maxEnemy);
 
-        return randomIndices;
-    }
+			if (weaponManager != null && weaponManager.Enemies.Count <= 5)
+				randEnemyCount = UnityEngine.Random.Range(maxEnemy - 2, maxEnemy);
 
-    private void Update()
-    {
-        if (timeBtwSpawn <= 0)
-        {
-            int randEnemyCount = UnityEngine.Random.Range(2, maxEnemy);
-            if (weaponManager.Enemies.Count <= 5)
-                randEnemyCount = UnityEngine.Random.Range(maxEnemy - 2, maxEnemy);
+			// 🔒 Giới hạn số spawn hợp lệ
+			int validSpawnCount = Mathf.Min(maxEnemy, spawners.Count);
 
-            List<int> randomIndex = GetRandomIndices(maxEnemy, randEnemyCount);
+			// Lấy random index trong phạm vi spawners.Count
+			List<int> randomIndex = GetRandomIndices(validSpawnCount, randEnemyCount);
 
-            foreach(int index in randomIndex)
-            {
-                int randEnemy = UnityEngine.Random.Range(0, enemies.Length);
-                spawners[index].spawnEnemy(enemies[randEnemy]);
-            }
-            timeBtwSpawn = startTimeBtwSpawn;
+			foreach (int index in randomIndex)
+			{
+				if (index < 0 || index >= spawners.Count)
+				{
+					Debug.LogWarning($"Invalid spawner index: {index}");
+					continue;
+				}
 
-            roundCount++;
-            if (roundCount > 10)
-            {
-                roundCount = 0;
-                maxEnemy = Mathf.Max(spawners.Count, maxEnemy + 1);
-            }
-        }
-        else
-        {
-            timeBtwSpawn -= Time.deltaTime;
-        }
-    }
+				int randEnemy = UnityEngine.Random.Range(0, enemies.Length);
+				if (enemies.Length > 0 && spawners[index] != null)
+					spawners[index].spawnEnemy(enemies[randEnemy]);
+			}
+
+			timeBtwSpawn = startTimeBtwSpawn;
+
+			roundCount++;
+			if (roundCount > 10)
+			{
+				roundCount = 0;
+				maxEnemy = Mathf.Max(spawners.Count, maxEnemy + 1);
+			}
+		}
+		else
+		{
+			timeBtwSpawn -= Time.deltaTime;
+		}
+	}
 }

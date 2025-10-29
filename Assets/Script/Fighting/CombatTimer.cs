@@ -61,7 +61,8 @@ public class MatchTimer : MonoBehaviour
 			countdown--;
 		}
 
-		startCountdownText.text = "FIGHT";
+		startCountdownText.text = "FIGHTING";
+		AudioManager_Fight.instance.VoiceFight();
 		yield return new WaitForSecondsRealtime(1f);
 
 		startCountdownText.gameObject.SetActive(false);
