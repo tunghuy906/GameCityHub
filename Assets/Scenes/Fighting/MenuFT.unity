@@ -1144,6 +1144,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 220961578}
+        m_TargetAssemblyTypeName: MenuEvents, Assembly-CSharp
+        m_MethodName: ButtonMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &741281643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1762,6 +1774,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 220961578}
+        m_TargetAssemblyTypeName: MenuEvents, Assembly-CSharp
+        m_MethodName: ButtonMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1073708528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2032,9 +2056,11 @@ MonoBehaviour:
   attackClip: {fileID: 8300000, guid: e5666ed333582a740a692d5b97b8da0f, type: 3}
   dashClip: {fileID: 8300000, guid: a124d9e1d1db44c40928d9176a40b064, type: 3}
   blockClip: {fileID: 8300000, guid: e4882a03d8b2b154a906190b4e9b2da7, type: 3}
+  hurtClip: {fileID: 0}
   skill1Clip: {fileID: 8300000, guid: cc6a6908f11a8564788ea260ec413ee6, type: 3}
   skill2Clip: {fileID: 8300000, guid: bf53f6fffb3be4f49b5f10e30afa0298, type: 3}
   skill3Clip: {fileID: 8300000, guid: bf53f6fffb3be4f49b5f10e30afa0298, type: 3}
+  ButtonClip: {fileID: 8300000, guid: fb2cc5e854e5b7a4b9e8c59ea3d2906f, type: 3}
   fightClip: {fileID: 8300000, guid: fdd034450152f8941b07b7c019a807b6, type: 3}
 --- !u!4 &1089154850
 Transform:
@@ -2573,6 +2599,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 220961578}
+        m_TargetAssemblyTypeName: MenuEvents, Assembly-CSharp
+        m_MethodName: ButtonMusic
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3217,6 +3255,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 220961578}
+        m_TargetAssemblyTypeName: MenuEvents, Assembly-CSharp
+        m_MethodName: ButtonMusic
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

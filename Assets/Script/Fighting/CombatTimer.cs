@@ -14,6 +14,12 @@ public class MatchTimer : MonoBehaviour
 	public TextMeshProUGUI startCountdownText;
 	public float startCountdownDuration = 3f;
 
+	[Header("Countdown Images")]
+	public Image count1Image;
+	public Image count2Image;
+	public Image count3Image;
+	public Image fightImage;
+
 	[Header("References")]
 	public TextMeshProUGUI timerText;
 	public Image resultPanel;
@@ -24,9 +30,9 @@ public class MatchTimer : MonoBehaviour
 	public Image drawImage;
 
 	[Header("Marker Prefabs (World Objects)")]
-	public GameObject playerMarkerPrefab;  // Prefab tam giác xanh
-	public GameObject enemyMarkerPrefab;   // Prefab tam giác đỏ
-	public Vector3 markerOffset = new Vector3(0, 2f, 0); // cao trên đầu
+	public GameObject playerMarkerPrefab;
+	public GameObject enemyMarkerPrefab;
+	public Vector3 markerOffset = new Vector3(0, 2f, 0);
 
 	public Damageable player;
 	public Damageable enemy;
@@ -45,27 +51,50 @@ public class MatchTimer : MonoBehaviour
 		loseImage.gameObject.SetActive(false);
 		drawImage.gameObject.SetActive(false);
 
-		// Chưa tạo marker
+		// Ẩn các ảnh đếm ngược
+		if (count1Image) count1Image.gameObject.SetActive(false);
+		if (count2Image) count2Image.gameObject.SetActive(false);
+		if (count3Image) count3Image.gameObject.SetActive(false);
+		if (fightImage) fightImage.gameObject.SetActive(false);
+
 		Time.timeScale = 0f;
 		StartCoroutine(StartCountdown());
 	}
 
 	private IEnumerator StartCountdown()
 	{
-		float countdown = startCountdownDuration;
+		// Ẩn text cũ
+		if (startCountdownText) startCountdownText.gameObject.SetActive(false);
 
-		while (countdown > 0)
+		// Hiện lần lượt ảnh 3 → 2 → 1 → FIGHT
+		if (count3Image)
 		{
-			startCountdownText.text = Mathf.Ceil(countdown).ToString();
+			count3Image.gameObject.SetActive(true);
 			yield return new WaitForSecondsRealtime(1f);
-			countdown--;
+			count3Image.gameObject.SetActive(false);
 		}
 
-		startCountdownText.text = "FIGHTING";
-		AudioManager_Fight.instance.VoiceFight();
-		yield return new WaitForSecondsRealtime(1f);
+		if (count2Image)
+		{
+			count2Image.gameObject.SetActive(true);
+			yield return new WaitForSecondsRealtime(1f);
+			count2Image.gameObject.SetActive(false);
+		}
 
-		startCountdownText.gameObject.SetActive(false);
+		if (count1Image)
+		{
+			count1Image.gameObject.SetActive(true);
+			yield return new WaitForSecondsRealtime(1f);
+			count1Image.gameObject.SetActive(false);
+		}
+
+		if (fightImage)
+		{
+			fightImage.gameObject.SetActive(true);
+			AudioManager_Fight.instance.VoiceFight();
+			yield return new WaitForSecondsRealtime(1f);
+			fightImage.gameObject.SetActive(false);
+		}
 
 		// ✅ Spawn marker khi trận bắt đầu
 		if (playerMarkerPrefab != null && player != null)
@@ -77,6 +106,7 @@ public class MatchTimer : MonoBehaviour
 		Time.timeScale = 1f;
 	}
 
+	// Các phần còn lại giữ nguyên hoàn toàn
 	private void Update()
 	{
 		if (matchEnded || Time.timeScale == 0f) return;
@@ -155,7 +185,6 @@ public class MatchTimer : MonoBehaviour
 				break;
 		}
 
-		// Ẩn marker khi hết trận
 		if (playerMarker != null) Destroy(playerMarker);
 		if (enemyMarker != null) Destroy(enemyMarker);
 

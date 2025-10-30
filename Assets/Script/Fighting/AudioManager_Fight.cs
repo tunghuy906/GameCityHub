@@ -24,6 +24,9 @@ public class AudioManager_Fight : MonoBehaviour
 	public AudioClip skill2Clip;
 	public AudioClip skill3Clip;
 
+	[Header("ButtonClips")]
+	public AudioClip ButtonClip;
+
 	[Header("Announcer / Voice")]
 	public AudioClip fightClip; // "3...2...1...Fight!"
 
@@ -76,6 +79,7 @@ public class AudioManager_Fight : MonoBehaviour
 	public void PlaySkill2() { if (skill2Clip != null) sfxSource.PlayOneShot(skill2Clip); }
 	public void PlaySkill3() { if (skill3Clip != null) sfxSource.PlayOneShot(skill3Clip); }
 	public void VoiceFight() { if (fightClip != null) sfxSource.PlayOneShot(fightClip); }
+	public void PlayButton() { if (ButtonClip != null) sfxSource.PlayOneShot(ButtonClip); }
 
 	public void StopBGM()
 	{

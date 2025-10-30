@@ -10,7 +10,11 @@ public class MenuEvents : MonoBehaviour
 	{
 		SceneManager.LoadScene(index);
 	}
-
+	public void ButtonMusic()
+	{
+		if (AudioManager_Fight.instance != null)
+			AudioManager_Fight.instance.PlayButton();
+	}
 	// 🔹 Hàm này để thoát game
 	public void QuitGame()
 	{

@@ -97,7 +97,7 @@ public class Grid : MonoBehaviour
        // int _y = yDim - 1;
         while (needsRefill)
         {
-			AudioManager_Match3.instance.PlayCombo();
+			//AudioManager_Match3.instance.PlayCombo();
 			yield return new WaitForSeconds(fillTime);
             while (FillStep())
             {
