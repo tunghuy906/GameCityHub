@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 88d3b1f0b345428428692c7798c93350
+guid: fd1432dc289756b42bf2cc2400574dcd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 1 2 3 Fighting okee_0
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 107
+        width: 78
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2484da2654358e34ab7c2c924032e637
+      internalID: -1562378479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1 2 3 Fighting okee_1
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 107
+        width: 78
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e681ce81e3ad1fc43a676748a75cf7d9
+      internalID: -1667554859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1 2 3 Fighting okee_2
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 107
+        width: 78
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 587efa22d0881ca43852b3492a24a747
+      internalID: 1535495409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1 2 3 Fighting okee_3
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 107
+        width: 427
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a13e08e9eebf6144ba7c9199cfbacde
+      internalID: 1496879598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +203,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      1 2 3 Fighting okee_0: -1562378479
+      1 2 3 Fighting okee_1: -1667554859
+      1 2 3 Fighting okee_2: 1535495409
+      1 2 3 Fighting okee_3: 1496879598
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

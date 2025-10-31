@@ -188,7 +188,7 @@ public class MatchTimer : MonoBehaviour
 		if (playerMarker != null) Destroy(playerMarker);
 		if (enemyMarker != null) Destroy(enemyMarker);
 
-		StartCoroutine(DelayStopTime());
+		StartCoroutine(ReturnToMenuAfterDelay());
 	}
 
 	private IEnumerator DelayStopTime()
@@ -196,4 +196,19 @@ public class MatchTimer : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		Time.timeScale = 0f;
 	}
+	private IEnumerator ReturnToMenuAfterDelay()
+	{
+		// 🔹 Tạm dừng thời gian để người chơi xem kết quả, nhưng vẫn cho UI hiển thị
+		Time.timeScale = 0f;
+
+		// 🔹 Chờ 5 giây thật (Realtime)
+		yield return new WaitForSecondsRealtime(2f);
+
+		// 🔹 Bật lại thời gian (phòng khi cần hiệu ứng chuyển)
+		Time.timeScale = 1f;
+
+		// 🔹 Quay về menu chính
+		UnityEngine.SceneManagement.SceneManager.LoadScene("MenuFT");
+	}
+
 }

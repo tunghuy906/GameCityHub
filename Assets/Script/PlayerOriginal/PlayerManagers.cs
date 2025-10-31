@@ -8,11 +8,76 @@ public class PlayerManagers : MonoBehaviour
 	public GameObject[] topdownPrefabs;
 	public CinemachineVirtualCamera VCam;
 
-	private static GameObject playerInstance;      // instance player duy nhất
+	private static GameObject playerInstance;
 	private static int playerMode = 0;             // 0 = none, 1 = platform, 2 = topdown
-	private static int currentCharacterIndex = -1; // index đã spawn
+	private static int currentCharacterIndex = -1;
 
-	// Dùng Start() để chắc chắn mọi GameObject trong scene đã được tạo
+	// ✅ Chỉ hiện Player ở map 1, 2, 3
+	private int[] showInSceneIndexes = { 1, 2, 3 };
+	private static bool isSwitchingScene = false;
+
+	private void Awake()
+	{
+		SceneManager.sceneLoaded += OnSceneLoaded;
+		SceneManager.activeSceneChanged += OnActiveSceneChanged;
+	}
+
+	private void OnDestroy()
+	{
+		SceneManager.sceneLoaded -= OnSceneLoaded;
+		SceneManager.activeSceneChanged -= OnActiveSceneChanged;
+	}
+
+	// 🔹 Ẩn Player NGAY khi scene bắt đầu đổi (trước khi frame mới render)
+	private void OnActiveSceneChanged(Scene oldScene, Scene newScene)
+	{
+		isSwitchingScene = true;
+		int index = newScene.buildIndex;
+
+		if (!System.Array.Exists(showInSceneIndexes, s => s == index))
+		{
+			if (playerInstance != null)
+			{
+				playerInstance.SetActive(false);
+				Debug.Log($"[PlayerManagers] 🔕 Ẩn Player NGAY khi đổi scene sang index: {index}");
+			}
+		}
+	}
+
+	// 🔹 Khi scene load xong hoàn toàn
+	private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+	{
+		int index = scene.buildIndex;
+
+		if (!System.Array.Exists(showInSceneIndexes, s => s == index))
+		{
+			// ❌ Không phải map 1,2,3 => XÓA Player hoàn toàn
+			if (playerInstance != null)
+			{
+				Destroy(playerInstance);
+				playerInstance = null;
+				Debug.Log($"[PlayerManagers] 🧹 Destroy Player trong scene index: {index}");
+			}
+		}
+		else
+		{
+			// ✅ Là map 1,2,3 => Spawn lại Player nếu chưa có
+			if (playerInstance == null)
+			{
+				Debug.Log($"[PlayerManagers] 🔁 Recreate Player tại scene index: {index}");
+				SpawnOrMovePlayer();
+			}
+			else
+			{
+				playerInstance.SetActive(true);
+				Debug.Log($"[PlayerManagers] ✅ Giữ Player active trong scene index: {index}");
+			}
+		}
+
+		isSwitchingScene = false;
+	}
+
+	// ---------------------- SPAWN LOGIC ----------------------
 	void Start()
 	{
 		SpawnOrMovePlayer();
@@ -33,11 +98,11 @@ public class PlayerManagers : MonoBehaviour
 			return;
 		}
 
-		// Tìm spawn point trong scene (tag "PlayerSpawn")
+		// Tìm spawn point
 		GameObject spawn = GameObject.FindWithTag("PlayerSpawn");
 		Vector3 spawnPos = spawn != null ? spawn.transform.position : Vector3.zero;
 
-		// Bảo vệ index nằm trong mảng
+		// Kiểm tra prefab hợp lệ
 		if (characterIndex < 0) characterIndex = 0;
 		if (requiredMode == 1 && (platformPrefabs == null || platformPrefabs.Length == 0))
 		{
@@ -56,38 +121,39 @@ public class PlayerManagers : MonoBehaviour
 		if (playerInstance == null)
 		{
 			InstantiateNewPlayer(requiredMode, characterIndex, spawnPos);
-			Debug.Log("[PlayerManagers] Instantiate new player. Mode=" + requiredMode + " Index=" + characterIndex);
+			Debug.Log("[PlayerManagers] 🆕 Instantiate new player. Mode=" + requiredMode + " Index=" + characterIndex);
 		}
 		else
 		{
-			// Nếu mode khác (ví dụ platform -> topdown), destroy và instantiate mới
+			// Nếu mode khác (platform -> topdown), thay mới
 			if (playerMode != requiredMode || currentCharacterIndex != characterIndex)
 			{
-				Debug.Log("[PlayerManagers] Replacing existing player. oldMode=" + playerMode + " newMode=" + requiredMode);
+				Debug.Log("[PlayerManagers] ♻️ Replacing existing player. oldMode=" + playerMode + " newMode=" + requiredMode);
 				Destroy(playerInstance);
 				playerInstance = null;
 				InstantiateNewPlayer(requiredMode, characterIndex, spawnPos);
 			}
 			else
 			{
-				// cùng mode -> chỉ di chuyển tới spawn
+				// Cùng mode => chỉ di chuyển về spawn
 				playerInstance.transform.position = spawnPos;
 				ResetVelocity(playerInstance);
 			}
 		}
 
-		// Gắn camera follow player
+		// Gắn camera follow
 		if (VCam != null && playerInstance != null)
 		{
 			VCam.Follow = playerInstance.transform;
 		}
+
+		// Gắn AI (nếu có)
 		CatMovement[] cats = FindObjectsOfType<CatMovement>();
 		foreach (var cat in cats)
 		{
 			cat.SetTarget(playerInstance.transform);
 		}
 	}
-
 
 	void InstantiateNewPlayer(int mode, int characterIndex, Vector3 pos)
 	{
@@ -96,15 +162,32 @@ public class PlayerManagers : MonoBehaviour
 			playerInstance = Instantiate(platformPrefabs[characterIndex], pos, Quaternion.identity);
 			playerMode = 1;
 		}
-		else // mode == 2
+		else
 		{
 			playerInstance = Instantiate(topdownPrefabs[characterIndex], pos, Quaternion.identity);
 			playerMode = 2;
 		}
 
 		currentCharacterIndex = characterIndex;
-		DontDestroyOnLoad(playerInstance);
-		// tuỳ chọn: đặt tag để dễ tìm
+		SceneManager.sceneLoaded += (scene, mode) =>
+		{
+			int index = scene.buildIndex;
+			if (System.Array.Exists(showInSceneIndexes, s => s == index))
+			{
+				// Nếu scene được phép hiển thị player -> spawn
+				if (playerInstance == null)
+					SpawnOrMovePlayer();
+			}
+			else
+			{
+				// Nếu scene KHÔNG cho phép hiển thị player -> xoá player trước khi render
+				if (playerInstance != null)
+				{
+					Destroy(playerInstance);
+					playerInstance = null;
+				}
+			}
+		};
 		playerInstance.tag = "PlayerPF";
 	}
 
