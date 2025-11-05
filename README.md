@@ -1,4 +1,4 @@
-<img width="866" height="334" alt="image" src="https://github.com/user-attachments/assets/7485fea9-ebf3-4c8a-96f0-081e140ac70e" /># GAME CITY HUB
+# GAME CITY HUB
 Phiên bản Unity: 2022.3.33f1
 ## Giới thiệu 
 GAME CITY HUB là một trò chơi thành phố đa trò chơi (Multi-Game City), nơi người chơi có thể tự do di chuyển trong một thành phố ảo sinh động và tham gia nhiều mini game khác nhau tại các khu vực riêng biệt.
