@@ -52,5 +52,5 @@ cd GameCityHub
 - Chọn platform (Windows, Mac, Linux)
 - Click "Build and Run"
 
-##Changelog
+## Changelog
 Version 1.0.0
