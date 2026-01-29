@@ -8,6 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
@@ -384,13 +385,18 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 359249691
+    uuid:
+      value0: 1645325639
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 1645325639
     name: Waterbubble
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Waterbubble_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -399,7 +405,7 @@ ScriptedImporter:
         width: 12
         height: 10
       spriteId: 7552b25bb84ef7946a9885f7873be5c7
-    - name: Waterbubble_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -408,7 +414,7 @@ ScriptedImporter:
         width: 27
         height: 21
       spriteId: b20ef9b782f18f64b8f4e64f542552a0
-    - name: Waterbubble_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -417,7 +423,7 @@ ScriptedImporter:
         width: 37
         height: 34
       spriteId: 8527da18e408fec4abadba8079742fd0
-    - name: Waterbubble_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -426,7 +432,7 @@ ScriptedImporter:
         width: 46
         height: 42
       spriteId: 9d13a7d3a12da0748a1bba143f6ddc04
-    - name: Waterbubble_Frame_4
+    - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
@@ -435,7 +441,7 @@ ScriptedImporter:
         width: 47
         height: 42
       spriteId: 0d0b37c76ea1d3c4588492cd94f48887
-    - name: Waterbubble_Frame_5
+    - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
@@ -444,7 +450,7 @@ ScriptedImporter:
         width: 47
         height: 41
       spriteId: 2fd4544b7abeeff48816f593385476e1
-    - name: Waterbubble_Frame_6
+    - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
@@ -453,7 +459,7 @@ ScriptedImporter:
         width: 47
         height: 41
       spriteId: 663c4952bde18584c9da453dae6a3e51
-    - name: Waterbubble_Frame_7
+    - name: Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
@@ -462,7 +468,7 @@ ScriptedImporter:
         width: 46
         height: 42
       spriteId: 94fe238d2bd459c48be8e7c49b11c8d7
-    - name: Waterbubble_Frame_8
+    - name: Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
@@ -471,7 +477,7 @@ ScriptedImporter:
         width: 47
         height: 44
       spriteId: 12d7cb4e41befb84a87ca31844110740
-    - name: Waterbubble_Frame_9
+    - name: Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
@@ -480,7 +486,7 @@ ScriptedImporter:
         width: 45
         height: 42
       spriteId: 43ad089ceada63d4ba9ddca785684168
-    - name: Waterbubble_Frame_10
+    - name: Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
@@ -489,7 +495,7 @@ ScriptedImporter:
         width: 32
         height: 31
       spriteId: c933ab4ee5751474e924b394e8fd9346
-    - name: Waterbubble_Frame_11
+    - name: Frame_11
       frameIndex: 11
       additiveSortOrder: 0
       cellRect:
@@ -498,7 +504,7 @@ ScriptedImporter:
         width: 18
         height: 18
       spriteId: f504cdfef8a58594992d15644ebda01e
-    - name: Waterbubble_Frame_12
+    - name: Frame_12
       frameIndex: 12
       additiveSortOrder: 0
       cellRect:
@@ -514,3 +520,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 48, y: 48}
+  previousTextureSize: {x: 128, y: 256}

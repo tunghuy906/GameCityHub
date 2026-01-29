@@ -8,6 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
@@ -243,26 +244,6 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 172}
   - name: Electro_Frame_0
     originalName: 
-    pivot: {x: 0, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 116
-      y: 59
-      width: 0
-      height: 0
-    spriteID: 308b051fb96de4d45a8dc43cd2abb400
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 68, y: 11}
-  - name: Electro_Frame_7
-    originalName: 
     pivot: {x: 0.5, y: -0.021276597}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,7 +253,7 @@ ScriptedImporter:
       y: 4
       width: 48
       height: 47
-    spriteID: f5facbcaaa893dd47a78979d0f947c3a
+    spriteID: 308b051fb96de4d45a8dc43cd2abb400
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -284,13 +265,18 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1567630654
+    uuid:
+      value0: 934344630
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 934344630
     name: Electro
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Electro_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -299,7 +285,7 @@ ScriptedImporter:
         width: 48
         height: 35
       spriteId: c8c4034f7f7b6a044872c60ab88e27b2
-    - name: Electro_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -308,7 +294,7 @@ ScriptedImporter:
         width: 48
         height: 48
       spriteId: 781cfeb4fb3eace4c9436e0cfc766cc4
-    - name: Electro_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -317,7 +303,7 @@ ScriptedImporter:
         width: 48
         height: 48
       spriteId: 9e2eb5f2bdf435b43aa09692973c4102
-    - name: Electro_Frame_4
+    - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
@@ -326,7 +312,7 @@ ScriptedImporter:
         width: 48
         height: 48
       spriteId: 3c333b60666cec840ae54e27417c0c5f
-    - name: Electro_Frame_5
+    - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
@@ -335,7 +321,7 @@ ScriptedImporter:
         width: 48
         height: 46
       spriteId: ac83ea40d892837478312c6e388efa0a
-    - name: Electro_Frame_6
+    - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
@@ -344,16 +330,7 @@ ScriptedImporter:
         width: 48
         height: 48
       spriteId: 72ab1fefb0e28194781a66cd27ea6fe4
-    - name: Electro_Frame_0
-      frameIndex: 0
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 48
-      spriteId: 308b051fb96de4d45a8dc43cd2abb400
-    - name: Electro_Frame_7
+    - name: Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
@@ -361,7 +338,7 @@ ScriptedImporter:
         y: 1
         width: 48
         height: 47
-      spriteId: f5facbcaaa893dd47a78979d0f947c3a
+      spriteId: 308b051fb96de4d45a8dc43cd2abb400
     linkedCells: []
     parentIndex: -1
   platformSettings: []
@@ -369,3 +346,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 48, y: 48}
+  previousTextureSize: {x: 128, y: 256}

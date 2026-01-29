@@ -8,6 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
@@ -224,13 +225,18 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -623642501
+    uuid:
+      value0: 3828198439
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: -466768857
     name: Ice
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Ice_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -239,7 +245,7 @@ ScriptedImporter:
         width: 8
         height: 11
       spriteId: 7d6c5ec5b06704443bd0ad79ba5f3f66
-    - name: Ice_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -248,7 +254,7 @@ ScriptedImporter:
         width: 39
         height: 34
       spriteId: 3513bcfd26f7e0b4faec6c06f6a7b285
-    - name: Ice_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -257,7 +263,7 @@ ScriptedImporter:
         width: 39
         height: 41
       spriteId: db90d64cd663d624fbca92e41b608fdf
-    - name: Ice_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -266,7 +272,7 @@ ScriptedImporter:
         width: 39
         height: 48
       spriteId: 48e72c452d1463947ac3546bd90d849f
-    - name: Ice_Frame_4
+    - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
@@ -282,3 +288,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 48, y: 48}
+  previousTextureSize: {x: 128, y: 128}

@@ -8,6 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
@@ -264,13 +265,18 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1735197871
+    uuid:
+      value0: 3412216363
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: -882750933
     name: Burning
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Burning_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -279,7 +285,7 @@ ScriptedImporter:
         width: 144
         height: 144
       spriteId: 1c610363b51b79049ae4c2832f159933
-    - name: Burning_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -288,7 +294,7 @@ ScriptedImporter:
         width: 144
         height: 144
       spriteId: e0966a2f03d3d8040a24389e388aa3b9
-    - name: Burning_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -297,7 +303,7 @@ ScriptedImporter:
         width: 144
         height: 144
       spriteId: da719ec30f23d8a4ab2d10fad8f0e0ea
-    - name: Burning_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -306,7 +312,7 @@ ScriptedImporter:
         width: 144
         height: 144
       spriteId: d891dc3e5caa979469c62284c4d6aace
-    - name: Burning_Frame_4
+    - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
@@ -315,7 +321,7 @@ ScriptedImporter:
         width: 144
         height: 144
       spriteId: e891f1f7f7b377e44bb55a0e1758b267
-    - name: Burning_Frame_5
+    - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
@@ -324,7 +330,7 @@ ScriptedImporter:
         width: 144
         height: 144
       spriteId: 994df608553814c4e97554aa474f8b43
-    - name: Burning_Frame_6
+    - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
@@ -340,3 +346,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 144, y: 144}
+  previousTextureSize: {x: 256, y: 256}

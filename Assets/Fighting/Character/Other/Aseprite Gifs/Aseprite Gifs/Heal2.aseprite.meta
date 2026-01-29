@@ -8,6 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
@@ -344,13 +345,18 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1120195598
+    uuid:
+      value0: 3967588922
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: -327378374
     name: Heal2
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Heal2_Frame_7
+    - name: Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
@@ -359,7 +365,7 @@ ScriptedImporter:
         width: 49
         height: 77
       spriteId: 061100724d2ba64409eb1e95f023d0a2
-    - name: Heal2_Frame_8
+    - name: Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
@@ -368,7 +374,7 @@ ScriptedImporter:
         width: 44
         height: 64
       spriteId: 54341f6bc2c4e9f4d94c1d81533e3120
-    - name: Heal2_Frame_10
+    - name: Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
@@ -377,7 +383,7 @@ ScriptedImporter:
         width: 17
         height: 14
       spriteId: 7f619edb926fc3a42852f6725c7d353b
-    - name: Heal2_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -386,7 +392,7 @@ ScriptedImporter:
         width: 114
         height: 109
       spriteId: 839a4340aee88d749a81abd8cca9e6d5
-    - name: Heal2_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -395,7 +401,7 @@ ScriptedImporter:
         width: 112
         height: 140
       spriteId: 52bd39793edfbf94b86d951cf9771609
-    - name: Heal2_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -404,7 +410,7 @@ ScriptedImporter:
         width: 78
         height: 131
       spriteId: 4690462be2e9bf24b971c679569e0936
-    - name: Heal2_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -413,7 +419,7 @@ ScriptedImporter:
         width: 110
         height: 114
       spriteId: ca20140e60f0844458e23dc43393c93a
-    - name: Heal2_Frame_4
+    - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
@@ -422,7 +428,7 @@ ScriptedImporter:
         width: 107
         height: 82
       spriteId: 92e332ccd42800144bc713170d16509b
-    - name: Heal2_Frame_5
+    - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
@@ -431,7 +437,7 @@ ScriptedImporter:
         width: 62
         height: 64
       spriteId: 83db9649972b6e8468c9dfdf8f7ccc48
-    - name: Heal2_Frame_6
+    - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
@@ -440,7 +446,7 @@ ScriptedImporter:
         width: 50
         height: 40
       spriteId: 9f7f14123fd9e2243bf4c10280648cb5
-    - name: Heal2_Frame_9
+    - name: Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
@@ -456,3 +462,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 192, y: 192}
+  previousTextureSize: {x: 256, y: 512}

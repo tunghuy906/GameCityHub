@@ -8,6 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
@@ -264,13 +265,18 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1657399676
+    uuid:
+      value0: 1540409964
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 1540409964
     name: Earthspike
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Earthspike_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -279,7 +285,7 @@ ScriptedImporter:
         width: 22
         height: 6
       spriteId: 0e3d22cb459fccb48af664a2e1c3dd87
-    - name: Earthspike_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -288,7 +294,7 @@ ScriptedImporter:
         width: 22
         height: 30
       spriteId: 4f31e1df961884b4bab5e387702302c1
-    - name: Earthspike_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -297,7 +303,7 @@ ScriptedImporter:
         width: 23
         height: 31
       spriteId: eb6eb5b0049f2524092708fec3191628
-    - name: Earthspike_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -306,7 +312,7 @@ ScriptedImporter:
         width: 30
         height: 29
       spriteId: 051c43593b6eaa1449656217dc831af2
-    - name: Earthspike_Frame_4
+    - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
@@ -315,7 +321,7 @@ ScriptedImporter:
         width: 37
         height: 22
       spriteId: 7821230548948e745ad7bf61338f8e92
-    - name: Earthspike_Frame_5
+    - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
@@ -324,7 +330,7 @@ ScriptedImporter:
         width: 41
         height: 13
       spriteId: 6673c6dcc6ffc8940861409c7104d104
-    - name: Earthspike_Frame_6
+    - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
@@ -340,3 +346,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 48, y: 48}
+  previousTextureSize: {x: 128, y: 128}

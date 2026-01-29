@@ -8,6 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
@@ -304,13 +305,18 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -926401079
+    uuid:
+      value0: 614324269
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 614324269
     name: ice2
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: ice2_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -319,7 +325,7 @@ ScriptedImporter:
         width: 24
         height: 15
       spriteId: e1587135f6c3a0444aff2cefd97aec80
-    - name: ice2_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -328,7 +334,7 @@ ScriptedImporter:
         width: 43
         height: 36
       spriteId: 8dab3eeb00fe11745ab0c964c126805d
-    - name: ice2_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -337,7 +343,7 @@ ScriptedImporter:
         width: 38
         height: 43
       spriteId: acb0250b33acae842a366a1674094ff8
-    - name: ice2_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -346,7 +352,7 @@ ScriptedImporter:
         width: 47
         height: 43
       spriteId: 7633a6ea2b992c242a957ba478cabf1f
-    - name: ice2_Frame_4
+    - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
@@ -355,7 +361,7 @@ ScriptedImporter:
         width: 47
         height: 36
       spriteId: ab3a1db0b77b3674ca2298836fecc804
-    - name: ice2_Frame_5
+    - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
@@ -364,7 +370,7 @@ ScriptedImporter:
         width: 46
         height: 29
       spriteId: c764caa348f4e094b99a7edbdac6827c
-    - name: ice2_Frame_6
+    - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
@@ -373,7 +379,7 @@ ScriptedImporter:
         width: 38
         height: 22
       spriteId: caf17be91925c174da6204b8a510fa02
-    - name: ice2_Frame_7
+    - name: Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
@@ -382,7 +388,7 @@ ScriptedImporter:
         width: 14
         height: 15
       spriteId: 4103feaa4b76b8640aa306a6e3341f14
-    - name: ice2_Frame_8
+    - name: Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
@@ -398,3 +404,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 48, y: 48}
+  previousTextureSize: {x: 128, y: 256}
