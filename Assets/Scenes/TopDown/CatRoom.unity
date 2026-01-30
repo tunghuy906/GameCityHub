@@ -7764,7 +7764,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: -310716101, guid: 22c7849eed380a34e942dcb1de6c6d76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7863,8 +7863,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.044408586, y: -0.1754025}
-  m_Size: {x: 1.2418087, y: 0.77789146}
+  m_Offset: {x: -0.000033748485, y: -0.10278941}
+  m_Size: {x: 1.0885162, y: 0.6326675}
   m_Direction: 1
 --- !u!114 &1865036631
 MonoBehaviour:
@@ -7932,6 +7932,7 @@ MonoBehaviour:
   - {fileID: 7139332439891178738, guid: 485ee4988eb6eb741bc51d6112904842, type: 3}
   - {fileID: 2531996176396114820, guid: a2fccca9bdc6ac94e84dc3736aabd127, type: 3}
   - {fileID: 6728466906761747005, guid: b3cfc9c4da9eb664f84e04a288a12662, type: 3}
+  - {fileID: 6728466906761747005, guid: 801880d542191e34598a7b9f2832ef50, type: 3}
   topdownPrefabs:
   - {fileID: 3730388711635429908, guid: 92618943059bbca48a5950ae086d4fc7, type: 3}
   - {fileID: 876523010177439171, guid: 8006b4989e846f14d87f79ea92a0f9af, type: 3}
@@ -7940,6 +7941,7 @@ MonoBehaviour:
   - {fileID: 2109806562247799178, guid: 9e073872f7524a24a8ae3c25bc9120d7, type: 3}
   - {fileID: 6141351765532689274, guid: fc3484f9a81cfba4b8d45be55c5ab0b1, type: 3}
   - {fileID: 3730388711635429908, guid: 03dd77d3bafc31246878cde3d47101ff, type: 3}
+  - {fileID: 3730388711635429908, guid: eec95c5c954a6cc4685cbfc6caf99c23, type: 3}
   VCam: {fileID: 1326203094}
 --- !u!4 &1882249259
 Transform:

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8436560779747376825}
   - component: {fileID: 4318175163307770171}
   m_Layer: 0
-  m_Name: ManTD
+  m_Name: ManTD 2
   m_TagString: PlayerTD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 2085875799, guid: dfdb4ee1cea55a344aabf9927aaedde0, type: 3}
+  m_Sprite: {fileID: 2051134722, guid: d36241a5fbc30b845b03ef2721e44b81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -140,7 +140,7 @@ Animator:
   m_GameObject: {fileID: 3730388711635429908}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6f91c8985fbe6094eab8fe91d47b6afc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 37f1d274a651d78429bde82499f64631, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
