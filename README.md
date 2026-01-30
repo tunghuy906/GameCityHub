@@ -1,5 +1,5 @@
 # METRO CITY
-Phiên bản Unity: 2022.3.33f1
+Phiên bản Unity: 2022.3.62f2
 ## Giới thiệu 
 Metro City là một trò chơi thành phố đa trò chơi (Multi-Game City), nơi người chơi có thể tự do di chuyển trong một thành phố ảo sinh động và tham gia nhiều mini game khác nhau tại các khu vực riêng biệt.
 Trò chơi được phát triển bằng Unity C#, hoạt động offline, mang lại trải nghiệm giải trí đa dạng và kết nối giữa các thể loại game yêu thích của người chơi.
