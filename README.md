@@ -1,7 +1,7 @@
-# GAME CITY HUB
-Phiên bản Unity: 2022.3.33f1
+# METRO CITY
+Phiên bản Unity: 2022.3.62f2
 ## Giới thiệu 
-GAME CITY HUB là một trò chơi thành phố đa trò chơi (Multi-Game City), nơi người chơi có thể tự do di chuyển trong một thành phố ảo sinh động và tham gia nhiều mini game khác nhau tại các khu vực riêng biệt.
+Metro City là một trò chơi thành phố đa trò chơi (Multi-Game City), nơi người chơi có thể tự do di chuyển trong một thành phố ảo sinh động và tham gia nhiều mini game khác nhau tại các khu vực riêng biệt.
 Trò chơi được phát triển bằng Unity C#, hoạt động offline, mang lại trải nghiệm giải trí đa dạng và kết nối giữa các thể loại game yêu thích của người chơi.
 ## Tính năng chính
 ### Gameplay
@@ -40,7 +40,7 @@ cd GameCityHub
 2.Mở project trong Unity:
 - Mở Unity Hub
 - Click "Open" và chọn thư mục project
-- Đảm bảo sử dụng Unity 2022.3.33f1
+- Đảm bảo sử dụng Unity 2022.3.62f2
 
 3.Install packages (nếu cần):
 - Unity Input System
