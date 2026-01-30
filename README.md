@@ -40,7 +40,7 @@ cd GameCityHub
 2.Mở project trong Unity:
 - Mở Unity Hub
 - Click "Open" và chọn thư mục project
-- Đảm bảo sử dụng Unity 2022.3.33f1
+- Đảm bảo sử dụng Unity 2022.3.62f2
 
 3.Install packages (nếu cần):
 - Unity Input System
