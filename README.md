@@ -17,7 +17,7 @@ Trò chơi được phát triển bằng Unity C#, hoạt động offline, mang 
     - Hệ thống chọn map.
   - **Game 2048**: Trượt các ô số để hợp nhất và đạt đến ô 2048.
   - **Game Fish-Fish-Fish(Game Match-3)**: Ghép 3 hoặc nhiều biểu tượng cá giống nhau để ghi điểm và tạo combo.
-  - Game Bang Bang Shooting: Di chuyển linh hoạt, bắn hạ kẻ địch và sống sót càng lâu càng tốt.
+  - **Game Bang Bang Shooting**: Di chuyển linh hoạt, bắn hạ kẻ địch và sống sót càng lâu càng tốt.
 ### Đồ họa và âm thanh
 - **Pixel Art**: Phong cách đồ họa pixel art đẹp mắt.
 - **Animation**: Hệ thống animation mượt mà cho nhân vật.
